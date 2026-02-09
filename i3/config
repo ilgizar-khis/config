@@ -126,3 +126,7 @@ smart_gaps off
 # цвета для окон: рамка   фон     текст
 client.focused    #ababab #ababab #000000
 client.unfocused  #000000 #000000 #ffffff
+
+# отключает выключение экрана
+exec --no-startup-id xset s off -dpms
+
