@@ -21,6 +21,8 @@ exec_always --no-startup-id "setxkbmap -option grp:win_space_toggle us,ru"
 # установка главной клавиши (win)
 set $mod Mod4
 
+focus_follows_mouse no
+
 # закрытие окна
 bindsym $mod+Shift+q kill
 # обновление и перезагрузка оконного менеджера
@@ -116,11 +118,11 @@ bindsym $mod+Shift+9 move container to workspace 9
 
 #ВНЕШНИЙ ВИД
 # ширина рамок окна, плавающего окна и включение умных рамок
-default_border pixel 3
+default_border pixel 5
 default_floating_border pixel 5
 smart_borders on
 # внешние и внутренние отступы, а также вкл/выкл умных отступов
-gaps outer 6
+gaps outer 7
 gaps inner 0
 smart_gaps off
 # цвета для окон: рамка   фон     текст
