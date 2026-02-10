@@ -45,11 +45,11 @@ vim.lsp.config("jdtls", {
 				runtimes = {
 					{
 						name = "JavaSE-21",
-						path = "/usr/lib/jvm/java-21-temurin/",
+						path = "/usr/lib/jvm/java-21-openjdk/",
 					},
 					{
-						name = "JavaSE-25",
-						path = "/usr/lib/jvm/java-25-openjdk/",
+						name = "JavaSE-24",
+						path = "/usr/lib/jvm/java-24-openjdk/",
 					},
 				},
 			},
