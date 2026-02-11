@@ -13,6 +13,7 @@ exec_always --no-startup-id picom
 # аппелты для bluetooth и интернета
 exec_always --no-startup-id blueman-applet
 exec_always --no-startup-id nm-applet
+exec_always --no-startup-id flameshot
 # менеджер буфера обмена
 exec_always --no-startup-id diodon
 # включение переключения раскладки клавиатуры англи(США) и рус(РФ).
@@ -23,6 +24,7 @@ set $mod Mod4
 
 focus_follows_mouse no
 
+bindsym Print exec flameshot gui
 # закрытие окна
 bindsym $mod+Shift+q kill
 # обновление и перезагрузка оконного менеджера

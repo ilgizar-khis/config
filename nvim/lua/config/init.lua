@@ -9,6 +9,7 @@ vim.opt.expandtab = true
 vim.opt.colorcolumn = "80"
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
+vim.opt.clipboard = "unnamedplus"
 
 vim.cmd("colorscheme gruvbox")
 -- vim.cmd("Neotree close")
