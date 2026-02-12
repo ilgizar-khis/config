@@ -1,4 +1,4 @@
-colorscheme gruvbox
+colorscheme my
 
 nnoremap <BS> :cd ..<CR>
 
