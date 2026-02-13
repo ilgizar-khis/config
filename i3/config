@@ -19,6 +19,8 @@ exec_always --no-startup-id diodon
 # включение переключения раскладки клавиатуры англи(США) и рус(РФ).
 exec_always --no-startup-id "setxkbmap -option grp:win_space_toggle us,ru"
 
+bindsym $mod+Shift+x exec "setxkbmap -option grp:win_space_toggle us,ru"
+
 # установка главной клавиши (win)
 set $mod Mod4
 
