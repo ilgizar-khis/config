@@ -17,3 +17,4 @@ vim.cmd("colorscheme gruvbox")
 vim.api.nvim_set_hl(0, 'ColorColumn', { bg = '#565656' })
 vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#343434' })
 
+-- vim.opt.statusline = "|%f|%w%=%l:%c|%p|"
