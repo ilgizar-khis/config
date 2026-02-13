@@ -7,7 +7,7 @@ exec_always --no-startup-id ~/.screenlayout/default.sh
 # запуск панели polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 # установка обоев
-exec_always --no-startup-id feh --bg-scale /home/razigli/Pictures/.bg/{31.png,24.jpeg}
+exec_always --no-startup-id feh --bg-scale /home/razigli/Pictures/.bg/{34.png,33.png}
 # включение композитора picom
 exec_always --no-startup-id picom
 # аппелты для bluetooth и интернета
@@ -124,7 +124,7 @@ default_border pixel 5
 default_floating_border pixel 5
 smart_borders on
 # внешние и внутренние отступы, а также вкл/выкл умных отступов
-gaps outer 7
+gaps outer 8
 gaps inner 0
 smart_gaps off
 # цвета для окон: рамка   фон     текст
@@ -134,3 +134,4 @@ client.unfocused  #000000 #000000 #ffffff
 # отключает выключение экрана
 exec --no-startup-id xset s off -dpms
 
+for_window[title="HoYoPlay"] floating enable

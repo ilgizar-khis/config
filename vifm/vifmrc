@@ -11,13 +11,15 @@ nnoremap s :shell<CR>
 
 set suggestoptions=normal,keys
 
-filextype *.png,*.jpg,*.jpeg,*.bmp,*.gif,*.webp eog
+filextype *.png,*.jpg,*.jpeg,*.bmp,*.gif,*.webp feh
 
 filextype *.mp4,*.mkv mpv
 
 filextype *.html,*.pdf firefox
 
 filextype *.zip,*.7z,*.tar*,*.tar.gz,*.tar.bz2,*.tar.xz,*.tar.zsz,*.tgz,*.rar xarchiver
+
+filextype *.torrent deluge
 
 set vicmd=nvim
 set wildmenu
