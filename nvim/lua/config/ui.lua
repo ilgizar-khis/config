@@ -1,0 +1,39 @@
+vim.cmd("colorscheme catppuccin-mocha")
+-- vim.cmd("Neotree close")
+
+vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#565656" })
+vim.api.nvim_set_hl(0, "CursorLine", { bg = "#343434" })
+
+vim.opt.laststatus = 2
+vim.opt.statusline = "%F %m %w%=%l:%c %p%%"
+
+function _G.my_tabline()
+	local tabline = ""
+	local current_buf = vim.api.nvim_get_current_buf()
+	local buffers = vim.api.nvim_list_bufs()
+
+	for _, buf in ipairs(buffers) do
+		if vim.api.nvim_buf_is_loaded(buf) then
+			local buf_name = vim.api.nvim_buf_get_name(buf)
+			if string.find(buf_name, "neo%-tree") then
+				goto continue
+			elseif buf_name == "" and buf ~= current_buf then
+				goto continue
+			end
+			buf_name = vim.fn.fnamemodify(buf_name, ":t")
+
+			if buf == current_buf then
+				tabline = tabline .. "%#TabLineSel# " .. buf_name .. " "
+			else
+				tabline = tabline .. "%#TabLine# " .. buf_name .. " "
+			end
+		end
+		::continue::
+	end
+
+	return tabline
+end
+
+vim.opt.showtabline = 2
+vim.opt.tabline = "%!v:lua.my_tabline()"
+vim.opt.mouse = "a"

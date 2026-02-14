@@ -18,6 +18,8 @@ return {
 				},
 			},
 			filesystem = {
+                group_empty_dirs = true,
+                scan_mode = "deep",
 				filtered_items = {
 					visible = true,
 					hide_dotfiles = false,
