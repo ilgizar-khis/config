@@ -4,7 +4,7 @@ vim.cmd("colorscheme catppuccin-mocha")
 vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#565656" })
 vim.api.nvim_set_hl(0, "CursorLine", { bg = "#343434" })
 
-vim.opt.laststatus = 2
+vim.opt.laststatus = 3
 vim.opt.statusline = "%F %m %w%=%l:%c %p%%"
 
 function _G.my_tabline()
@@ -34,6 +34,6 @@ function _G.my_tabline()
 	return tabline
 end
 
-vim.opt.showtabline = 2
+vim.opt.showtabline = 3
 vim.opt.tabline = "%!v:lua.my_tabline()"
 vim.opt.mouse = "a"
