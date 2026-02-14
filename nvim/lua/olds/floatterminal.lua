@@ -4,7 +4,7 @@ return {
 	opts = {
 		border = false,
 		size = { h = 80, w = 80 },
-
+        bg = "transparent",
 		-- to use, make this func(buf)
 		mappings = {
 			sidebar = nil,

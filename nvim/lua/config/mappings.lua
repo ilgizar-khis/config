@@ -21,7 +21,7 @@ vim.keymap.set("n", "<C-Down>", ":wincmd j<CR>")
 vim.keymap.set("n", "<C-\\>", ":vsplit<CR>")
 vim.keymap.set("n", "<C-S-\\>", ":split<CR>")
 
-vim.keymap.set("n", "<C-`>", ":FloatermToggle<CR>")
+-- vim.keymap.set("n", "<C-`>", ":FloatermToggle<CR>")
 
 vim.keymap.set("n", "<C-/>", ":CommentToggle<CR>")
 vim.keymap.set("v", "<C-/>", ":CommentToggle<CR>")
