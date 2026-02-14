@@ -11,10 +11,11 @@ vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
 vim.opt.clipboard = "unnamedplus"
 
-vim.cmd("colorscheme gruvbox")
+vim.cmd "colorscheme gruvbox"
 -- vim.cmd("Neotree close")
 
-vim.api.nvim_set_hl(0, 'ColorColumn', { bg = '#565656' })
-vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#343434' })
+vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#565656" })
+vim.api.nvim_set_hl(0, "CursorLine", { bg = "#343434" })
 
--- vim.opt.statusline = "|%f|%w%=%l:%c|%p|"
+vim.o.laststatus = 2
+vim.opt.statusline = "%F %m %w%=%l:%c %p%%"
