@@ -16,18 +16,17 @@ hlg("Keyword", { fg = "#cba6f7", bold = true })
 hlg("String", { fg = "#a6e3a1" })
 hlg("Type", { fg = "#f9e2af" })
 
-hlg("StatusLine", { fg = "#ffffff", bg = "#343434"})
+hlg("StatusLine", { fg = "#ffffff", bg = "#343434" })
 hlg("StatusLineNC", { fg = "#ababab", bg = "#000000" }) --неактивное окно
 hlg("StatusLineTerm", { fg = "#ffffff", bg = "#000000" })
 hlg("StatusLineTermNC", { fg = "#ababab", bg = "#000000" })
 
-hlg("TabLineFill", { fg = "#343434", bg = "#343434"})
-hlg("TabLine", { fg = "#ababab", bg = "#343434"})
-hlg("TabLineSel", { fg = "#ffffff", bg = "#999999"})
+hlg("TabLineFill", { fg = "#343434", bg = "#343434" })
+hlg("TabLine", { fg = "#ababab", bg = "#343434" })
+hlg("TabLineSel", { fg = "#ffffff", bg = "#676767" })
 
-hlg("@keyword", {fg = "#cba6f7", bold=true})
-hlg("@string", {fg = "#a6e3a1"})
-hlg("@type", {fg = "#f9e2af"})
+hlg("@keyword", { fg = "#cba6f7", bold = true })
+hlg("@string", { fg = "#a6e3a1" })
+hlg("@type", { fg = "#f9e2af" })
 
-print([[my_theme загружен]])
-
+print [[my_theme загружен]]

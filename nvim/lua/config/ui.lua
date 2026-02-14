@@ -1,11 +1,20 @@
 -- vim.cmd("colorscheme catppuccin-mocha")
 -- vim.cmd("Neotree close")
+local devicons = require "nvim-web-devicons"
 
 vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#565656" })
 vim.api.nvim_set_hl(0, "CursorLine", { bg = "#343434" })
 
+function MyStatusLine()
+  local rest = " %m %r %w%=%y %l:%c %p%%"
+  -- expand('%:~:.') дает путь относительно корня проекта или домашней папки
+  if vim.fn.expand "%:~:." == "" or vim.bo.buftype ~= "" then
+    return "%t" .. rest -- для специальных буферов показываем только имя
+  end
+  return vim.fn.expand "%:~:." .. rest
+end
 vim.opt.laststatus = 3
-vim.opt.statusline = " %F %m %w%=%l:%c %p%% "
+vim.opt.statusline = "%!v:lua.MyStatusLine()"
 
 function _G.my_tabline()
   local tabline = ""
@@ -23,19 +32,31 @@ function _G.my_tabline()
         goto continue
       end
       buf_name = vim.fn.fnamemodify(buf_name, ":t")
+
+      local is_modified = vim.api.nvim_buf_get_option(buf, "modified")
+      local mod_symbol = is_modified and " [+]" or " [ ]" -- или "+" или "•"
+
+      local ext = vim.fn.fnamemodify(buf_name, ":e")
+      local icon, icon_hl = devicons.get_icon(buf_name, ext, { default = true })
+      if icon_hl and icon ~= "" then
+        if icon_hl:match "^#" then vim.api.nvim_command("highlight IconColor guifg=" .. icon_hl) end
+      end
+
+      icon = icon or ""
+
       has_buffers = true
       if #tabline > 0 then tabline = tabline .. "%#TabLine#" end
 
       if buf == current_buf then
-        tabline = tabline .. "%#TabLineSel# " .. buf_name .. " "
+        tabline = tabline .. "%#TabLineSel# " .. icon .. " " .. buf_name .. mod_symbol .. " "
       else
-        tabline = tabline .. "%#TabLine# " .. buf_name .. " "
+        tabline = tabline .. "%#TabLine# " .. icon .. " " .. buf_name .. mod_symbol .. " "
       end
     end
     ::continue::
   end
   if has_buffers then
-    tabline =  tabline .. "%#TabLineFill# |"
+    tabline = tabline .. "%#TabLineFill# |"
   else
     tabline = "%#TabLineFill# "
   end
