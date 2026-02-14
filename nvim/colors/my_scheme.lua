@@ -8,7 +8,7 @@ local function hlg(group, color)
   vim.api.nvim_set_hl(0, group, opts)
 end
 
-hlg("Normal", { fg = "#fea987", bg = "none" })
+hlg("Normal", { fg = "#abcabc", bg = "none" })
 hlg("NormalFloat", { bg = "none" })
 hlg("Terminal", { bg = "none" })
 hlg("Comment", { fg = "#ababab", italic = true })
