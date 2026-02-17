@@ -1,5 +1,7 @@
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.scrolloff = 3
+vim.opt.wrap = false
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4

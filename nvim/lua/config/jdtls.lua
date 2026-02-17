@@ -1,5 +1,5 @@
 -- Файл: ~/.config/nvim/after/lsp/jdtls.lua (рекомендуется)
-local home = os.getenv("HOME")
+local home = os.getenv "HOME"
 local jdtls_dir = home .. "/.local/share/jdtls" -- Ваш путь к jdtls
 local workspace_dir = home .. "/.cache/jdtls-workspace/" .. vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 
@@ -62,4 +62,4 @@ vim.lsp.config("jdtls", {
 })
 
 -- Включение LSP для Java файлов
-vim.lsp.enable("jdtls")
+vim.lsp.enable "jdtls"

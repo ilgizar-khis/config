@@ -1,5 +1,4 @@
 vim.cmd "hi clear"
-vim.cmd "syntax reset"
 
 vim.g.colors_name = "my_theme"
 
@@ -28,5 +27,14 @@ hlg("TabLineSel", { fg = "#ffffff", bg = "#676767" })
 hlg("@keyword", { fg = "#cba6f7", bold = true })
 hlg("@string", { fg = "#a6e3a1" })
 hlg("@type", { fg = "#f9e2af" })
+
+vim.opt.list = true
+vim.opt.listchars = {
+    tab = "> ",
+    trail = ".",
+    extends = ">",
+    precedes = "<",
+    nbsp = ".",
+}
 
 print [[my_theme загружен]]

@@ -20,6 +20,7 @@ exec_always --no-startup-id diodon
 exec_always --no-startup-id "setxkbmap -option grp:win_space_toggle us,ru"
 
 bindsym $mod+Shift+x exec "setxkbmap -option grp:win_space_toggle us,ru"
+bindsym $mod+Shift+d exec thunar ~/Desktop
 
 # установка главной клавиши (win)
 set $mod Mod4
