@@ -7,7 +7,7 @@ exec_always --no-startup-id ~/.screenlayout/default.sh
 # запуск панели polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 # установка обоев
-exec_always --no-startup-id feh --bg-scale /home/razigli/Pictures/.bg/{35.png,33.png}
+exec_always --no-startup-id feh --bg-scale /home/razigli/Pictures/.bg/{6.jpeg,33.png}
 # включение композитора picom
 exec_always --no-startup-id picom
 # аппелты для bluetooth и интернета
