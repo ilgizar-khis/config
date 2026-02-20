@@ -22,7 +22,10 @@ hlg("StatusLineTermNC", { fg = "#ababab", bg = "#000000" })
 
 hlg("TabLineFill", { fg = "#343434", bg = "#343434" })
 hlg("TabLine", { fg = "#ababab", bg = "#343434" })
-hlg("TabLineSel", { fg = "#ffffff", bg = "#676767" })
+hlg("TabLineSel", { fg = "#ffffff", bg = "#000000" })
+
+hlg("ColorColumn", { bg = "#000000" })
+hlg("CursorLine", { bg = "#000000" })
 
 hlg("@keyword", { fg = "#cba6f7", bold = true })
 hlg("@string", { fg = "#a6e3a1" })

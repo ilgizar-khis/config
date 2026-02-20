@@ -2,8 +2,6 @@
 -- vim.cmd("Neotree close")
 local devicons = require "nvim-web-devicons"
 
-vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#565656" })
-vim.api.nvim_set_hl(0, "CursorLine", { bg = "#343434" })
 
 function MyStatusLine()
   local rest = " %m %r %w%=%y %l:%c %p%%"
