@@ -21,7 +21,7 @@ return {
         },
         mapping = cmp.mapping.preset.insert {
           ["<C-Space>"] = cmp.mapping.complete(),
-          ["<CR>"] = cmp.mapping.confirm { select = true },
+          ["<S-CR>"] = cmp.mapping.confirm(),
           ["<Tab>"] = cmp.mapping(function(fallbak)
             if cmp.visible() then
               cmp.select_next_item()

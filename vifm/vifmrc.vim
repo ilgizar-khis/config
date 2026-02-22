@@ -4,12 +4,14 @@ nnoremap <BS> :cd ..<CR>
 
 " nnoremap <C-c> :!echo -n %c:p | xclip -selection clipboard<CR>
 nnoremap <C-c> :!echo "file://%c:p" | xclip -selection clipboard -t text/uri-list<CR>
-
 nnoremap s :shell<CR>
+
+" command! nvim !nvim %d
 
 " nnoremap <C-v> :!xclip -o -selection clipboard -t text/uri-list | sed 's/^file:\/\///' | xargs -I {} cp {} .<CR>
 
-set suggestoptions=normal,keys
+set suggestoptions=normal,keys,otherpanel
+set timeoutlen=2000
 
 filextype *.png,*.jpg,*.jpeg,*.bmp,*.gif,*.webp feh
 

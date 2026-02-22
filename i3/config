@@ -35,7 +35,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # открытие терминала
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty
 # открытие меню rofi
 bindsym $mod+d exec rofi -show drun
 
