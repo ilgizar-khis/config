@@ -11,9 +11,6 @@ def print_targets():
         print(f"{from_} -> {to_}")
 
 
-
-
-
 current_dir = os.path.dirname(__file__)
 print(current_dir)
 
@@ -23,7 +20,7 @@ print(home)
 ignore = ["setup.py"]
 print_ignores()
 
-targets = {"bg": "Pictures/.bg"}
+targets = {"bg": "Pictures/.bg", "vimrc": ".vimrc"}
 print_targets()
 
 for from_name in os.listdir(current_dir):
