@@ -1,14 +1,17 @@
 import os
 import shutil
 
+
 def print_ignores():
     for item in ignore:
-        print(f"- { item }")
-
+        print(f"- {item}")
 
 def print_targets():
     for from_, to_ in targets.items():
         print(f"{from_} -> {to_}")
+
+
+
 
 
 current_dir = os.path.dirname(__file__)

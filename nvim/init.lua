@@ -8,4 +8,5 @@ require("luasnip.loaders.from_vscode").lazy_load({
     paths = { vim.fn.stdpath("config") .. "/snips" }
 })
 
-vim.cmd("colorscheme my_scheme")
+vim.cmd("colorscheme habamax")
+vim.api.nvim_set_hl(0, "Normal", {bg = "none"})
