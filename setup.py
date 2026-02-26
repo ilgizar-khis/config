@@ -1,38 +1,40 @@
 import os
 import shutil
 
-
-def print_ignores():
-    for item in ignore:
-        print(f"- {item}")
-
-def print_targets():
-    for from_, to_ in targets.items():
-        print(f"{from_} -> {to_}")
-
-
-current_dir = os.path.dirname(__file__)
-print(current_dir)
-
+current_dir = os.path.dirname(__file__) + "/"
 home = str(os.getenv("HOME")) + "/"
 print(home)
+targets: dict[str, str] = {
+    "bg": "Pictures/.bg",
+    "vimrc": "-.vimrc",
+    "nvim": ".config/nvim",
+    "kitty": ".config/kitty",
+    "polybar": ".config/polybar",
+    "vifm": ".config/vifm",
+    "i3": "-.config/i3",
+    "bspwmrc.sh": ".config/bspwm/bspwmrc",
+    "sxhkdrc": ".config/sxhkd/sxhkdrc"
+}
 
-ignore = ["setup.py"]
-print_ignores()
-
-targets = {"bg": "Pictures/.bg", "vimrc": ".vimrc"}
-print_targets()
-
-for from_name in os.listdir(current_dir):
-    if from_name in ignore:
+safe_mod = True
+if safe_mod:
+    print("safe mod enabled")
+else:
+    print("safe mod disabled")
+    safe_mod = input("Your want enable safe mod?").lower() in ("y", "yes")
+for source, target in targets.items():
+    if target[0] == "-":
+        print(current_dir+ source, "ignored")
         continue
-    target_name = home + ".config/" + from_name
-    if from_name in targets:
-        target_name = targets[from_name]
-    if os.path.exists(target_name):
-        if os.path.isdir(target_name):
-            shutil.rmtree(target_name)
+    if os.path.exists(home + target) and not safe_mod:
+        if os.path.isdir(home + target):
+            if os.path.islink(home + target):
+                os.remove(home + target)
+            else:
+                shutil.rmtree(home + target)
         else:
-            os.remove(target_name)
-    print(f"{from_name} -> {target_name}")
-    os.symlink(current_dir + "/" + from_name, target_name)
+            os.remove(home + target)
+    print(current_dir + source, "->", home+ target)
+    if not safe_mod:
+        os.symlink(current_dir + source, home + target)
+

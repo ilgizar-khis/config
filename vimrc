@@ -35,14 +35,15 @@ set scrolloff=4
 
 set laststatus=2
 set statusline=
-set statusline+=%F\ 
+set statusline+=%{expand('%:h')}/%{expand('%:F')}\ 
 set statusline+=%m\ 
 set statusline+=%{FugitiveHead()}
 set statusline+=%=
+set statusline+=%{&filetype}\ 
 set statusline+=lin:%l/%L\ 
 set statusline+=col:%c\ 
 set statusline+=%p%%
-
+set nowrap
 set showtabline=2
 
 function! MyTabLine()
@@ -125,5 +126,15 @@ nnoremap <C-j> :wincmd j<CR>
 nnoremap <C-k> :wincmd k<CR>
 nnoremap <M-h> :tabprevious<CR>
 nnoremap <M-l> :tabnext<CR>
+nnoremap <M-1> :tabnext 1<CR>
+nnoremap <M-2> :tabnext 2<CR>
+nnoremap <M-3> :tabnext 3<CR>
+nnoremap <M-4> :tabnext 4<CR>
+nnoremap <M-5> :tabnext 5<CR>
+nnoremap <M-6> :tabnext 6<CR>
+nnoremap <M-7> :tabnext 7<CR>
+nnoremap <M-8> :tabnext 8<CR>
+nnoremap <M-9> :tabnext 9<CR>
 nnoremap tt :FloatermToggle<CR>
+nnoremap \\ :vsplit<CR>
 tnoremap <ESC> <CMD>FloatermToggle<CR>
