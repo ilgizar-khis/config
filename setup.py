@@ -16,7 +16,7 @@ targets: dict[str, str] = {
     "sxhkdrc": ".config/sxhkd/sxhkdrc"
 }
 
-safe_mod = True
+safe_mod = False
 if safe_mod:
     print("safe mod enabled")
 else:

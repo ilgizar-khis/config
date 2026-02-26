@@ -1,0 +1,8 @@
+super + {0-9}
+    bspc desktop -f {0-9}
+
+super + Return
+    kitty
+
+super + shift + r
+    pkill sxhkd && bspc wm -r
