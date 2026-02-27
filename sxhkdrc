@@ -10,6 +10,9 @@ super + {h,j,k,l}
 super + shift + {h,j,k,l}
     bspc node -s {west,south,north,east}
 
+Print
+    flameshot gui
+
 super + Return
     kitty
 

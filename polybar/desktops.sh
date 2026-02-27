@@ -6,7 +6,9 @@ output=""
 for wokspace in "${ALL_WORKSPACES[@]}"; do
     action="%{A1:bspc desktop -f $wokspace:}" 
     if [[ "$wokspace" == "$current" ]]; then
-        output+="${action}%{B#AAAAAA}%{F#000000}  $wokspace  %{A1}"
+        output+="${action}%{B#FFFFFF}%{F#000000}  $wokspace  %{A1}"
+    elif bspc query -N -d $wokspace &>/dev/null; then
+        output+="${action}%{B#000000}%{F#FFFFFF}  $wokspace  %{A1}"
     else
         output+="${action}%{B#454545}%{F#FFFFFF}  $wokspace  %{A1}"
     fi
