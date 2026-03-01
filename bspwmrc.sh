@@ -10,7 +10,15 @@ xset s off &
 xset s noblank &
 xset -dmps &
 # bspc rule -a * title="TLauncher" state=floating &
-bspc rule -a '*:*:calcurse' state=floating rectangle=800x600+560+240 & 
+float_width="1400"
+float_height="800"
+let float_posx="1920/2 - $float_width/2"
+let float_posy="1080/2 - $float_height/2"
+bspc rule -a '*:*:calcurse' state=floating rectangle=${float_width}x${float_height}+${float_posx}+${float_posy} & 
+bspc rule -a '*:*:impala' state=floating rectangle=${float_width}x${float_height}+${float_posx}+${float_posy} & 
+bspc rule -a '*:*:pacseek' state=floating rectangle=${float_width}x${float_height}+${float_posx}+${float_posy} & 
+bspc rule -a '*:*:vifm' state=floating rectangle=${float_width}x${float_height}+${float_posx}+${float_posy} & 
+bspc rule -a '*:*:btop' state=floating rectangle=${float_width}x${float_height}+${float_posx}+${float_posy} & 
 bspc rule -a 'org-tlauncher-tlauncher-rmo-TLauncher' desktop=6 state=floating
 bspc monitor HDMI-1 -d  "6" "7" "8" "9" "0"
 bspc monitor eDP-1 -d "1" "2" "3" "4" "5"
