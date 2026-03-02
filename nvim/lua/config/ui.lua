@@ -18,9 +18,11 @@ function status_line()
     if branch then
         branch = " [ " .. branch
         if status then
-            branch = branch .. " | " .. status
+            status = ":" .. status
+        else
+            status = ""
         end
-        branch = branch .. " ] "
+        branch = branch .. status .. " ] "
     else
         branch = ""
     end
