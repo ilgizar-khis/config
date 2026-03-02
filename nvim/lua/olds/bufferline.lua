@@ -8,7 +8,7 @@ return {
 					mode = "buffers",
 					separator_style = "thick",
 					always_show_bufferline = true,
-                    show_close_icon = false
+					show_close_icon = false,
 				},
 			})
 		end,

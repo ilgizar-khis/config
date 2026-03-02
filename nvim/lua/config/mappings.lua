@@ -1,13 +1,13 @@
 vim.keymap.set("n", "e", function()
-    local cur_buf = vim.api.nvim_get_current_buf()
-    local buf_name = vim.fn.bufname(cur_buf)
+	local cur_buf = vim.api.nvim_get_current_buf()
+	local buf_name = vim.fn.bufname(cur_buf)
 
-    if string.find(buf_name, "neo%-tree") then
-      vim.cmd "colorscheme retrobox"
-      vim.cmd "wincmd w"
-    else
-      vim.cmd "Neotree reveal_file=%"
-    end
+	if string.find(buf_name, "neo%-tree") then
+		vim.cmd("colorscheme retrobox")
+		vim.cmd("wincmd w")
+	else
+		vim.cmd("Neotree reveal_file=%")
+	end
 end)
 
 vim.keymap.set("n", "<S-e>", ":Neotree toggle<CR>")
@@ -42,11 +42,11 @@ vim.keymap.set("n", "gi", ":lua vim.lsp.buf.implementation()<CR>")
 vim.keymap.set("n", "<Enter>", ":lua vim.diagnostic.open_float()<CR>")
 
 vim.keymap.set("n", "<S-Enter>", function()
-    local filetype = vim.bo.filetype
+	local filetype = vim.bo.filetype
 
-    if filetype == "java" then
-      vim.lsp.buf.format()
-    else
-      vim.cmd "Format"
-    end
+	if filetype == "java" then
+		vim.lsp.buf.format()
+	else
+		vim.cmd("Format")
+	end
 end)

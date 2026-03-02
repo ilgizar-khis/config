@@ -1,27 +1,39 @@
--- vim.cmd("colorscheme catppuccin-mocha")
--- vim.cmd("Neotree close")
-
 vim.cmd("colorscheme retrobox")
 
-vim.api.nvim_set_hl(0, "ColorColumn", {bg = "#555555"})
+vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#555555" })
 
 vim.opt.fillchars:append({
 	vert = "|",
 	horiz = "-",
+	eob = " ",
 })
 
 local devicons = require("nvim-web-devicons")
 
-function MyStatusLine()
-	local rest = " %m %r %w%=%y %l:%c %p%%"
-	-- expand('%:~:.') дает путь относительно корня проекта или домашней папки
+function status_line()
+
+	local branch = vim.b.gitsigns_head or ""
+	local status = vim.b.gitsigns_status or ""
+
+    if branch then
+        branch = " [ " .. branch
+        if status then
+            branch = branch .. " | " .. status
+        end
+        branch = branch .. " ] "
+    else
+        branch = ""
+    end
+
+
 	if vim.fn.expand("%:~:.") == "" or vim.bo.buftype ~= "" then
-		return "%t" .. rest -- для специальных буферов показываем только имя
+		return "%t" -- для специальных буферов показываем только имя
 	end
-	return vim.fn.expand("%:~:.") .. rest
+	return " " .. vim.fn.expand("%:~:.") .. "%m"   ..  branch .. " %r %w%=%y %l:%c %p%%"
 end
+
 vim.opt.laststatus = 3
-vim.opt.statusline = "%!v:lua.MyStatusLine()"
+vim.opt.statusline = "%!v:lua.status_line()"
 
 function _G.my_tabline()
 	local tabline = ""
@@ -36,6 +48,7 @@ function _G.my_tabline()
 			elseif string.find(buf_name, "toggleterm") then
 				goto continue
 			elseif buf_name == "" and buf ~= current_buf then
+				-- buf_name += "NoName"
 				goto continue
 			end
 			buf_name = vim.fn.fnamemodify(buf_name, ":t")
@@ -67,7 +80,7 @@ function _G.my_tabline()
 		::continue::
 	end
 	if has_buffers then
-		tabline = tabline .. "%#TabLineFill# |"
+		tabline = tabline .. "%#TabLineFill# "
 	else
 		tabline = "%#TabLineFill# "
 	end
@@ -77,3 +90,4 @@ end
 vim.opt.showtabline = 2
 vim.opt.tabline = "%!v:lua.my_tabline()"
 vim.opt.mouse = "a"
+-- vim.opt.winbar = "%!v:lua.status_line()"
