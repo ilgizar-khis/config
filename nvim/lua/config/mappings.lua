@@ -2,12 +2,7 @@ vim.keymap.set("n", "e", function()
 	local cur_buf = vim.api.nvim_get_current_buf()
 	local buf_name = vim.fn.bufname(cur_buf)
 
-	if string.find(buf_name, "neo%-tree") then
-		vim.cmd("colorscheme retrobox")
-		vim.cmd("wincmd w")
-	else
-		vim.cmd("Neotree reveal_file=%")
-	end
+	vim.cmd("Neotree reveal_file=%")
 end)
 
 vim.keymap.set("n", "<S-e>", ":Neotree toggle<CR>")
