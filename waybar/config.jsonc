@@ -7,34 +7,26 @@
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
-        "sway/workspaces",
-        "sway/mode",
-        "sway/scratchpad",
+        "niri/workspaces",
+        "niri/mode",
+        "niri/scratchpad",
         "custom/media"
     ],
     "modules-center": [
-        "sway/window"
+        "niri/window"
     ],
     "modules-right": [
         "mpd",
         "idle_inhibitor",
         "pulseaudio",
-        "network",
-        "power-profiles-daemon",
-        "cpu",
-        "memory",
-        "temperature",
-        "backlight",
         "keyboard-state",
-        "sway/language",
+        "niri/language",
         "battery",
-        "battery#bat2",
         "clock",
         "tray",
-        "custom/power"
     ],
     // Modules configuration
-    // "sway/workspaces": {
+    // "niri/workspaces": {
     //     "disable-scroll": true,
     //     "all-outputs": true,
     //     "warp-on-scroll": false,
@@ -59,10 +51,10 @@
             "unlocked": ""
         }
     },
-    "sway/mode": {
+    "niri/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
-    "sway/scratchpad": {
+    "niri/scratchpad": {
         "format": "{icon} {count}",
         "show-empty": false,
         "format-icons": ["", ""],
@@ -103,7 +95,7 @@
         }
     },
     "tray": {
-        // "icon-size": 21,
+        "icon-size": 21,
         "spacing": 10,
         // "icons": {
         //   "blueman": "bluetooth",
@@ -112,8 +104,8 @@
     },
     "clock": {
         // "timezone": "America/New_York",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "format": "{:%d-%m-%Y %H:%M:%S}",
+        "interval": 1
     },
     "cpu": {
         "format": "{usage}% ",

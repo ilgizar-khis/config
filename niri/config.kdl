@@ -269,6 +269,7 @@ layout {
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "waybar"
+spawn-at-startup "mako"
 spawn-sh-at-startup "swaybg -o eDP-1 -i ~/Pictures/.bg/33.png -m fill"
 spawn-sh-at-startup "swaybg -o HDMI-A-1 -i ~/Pictures/.bg/6.jpeg -m fill"
 
@@ -320,6 +321,13 @@ window-rule {
     default-column-width {}
 }
 
+window-rule {
+    match app-id="blueman-manager"
+    open-floating true
+    default-column-width { fixed 800; }
+    default-window-height { fixed 800; }
+}
+
 // Open the Firefox picture-in-picture player as floating by default.
 // window-rule {
 //     // This app-id regular expression will work for both:
@@ -369,7 +377,7 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Super+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
-    Super+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+    Super+D hotkey-overlay-title="Run an Application: fuzzel" { spawn-sh "rofi -show drun"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
