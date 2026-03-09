@@ -322,6 +322,41 @@ window-rule {
 }
 
 window-rule {
+    match title="INFO window"
+    open-floating true
+    default-column-width { fixed 200; }
+    default-window-height { fixed 100; }
+}
+
+window-rule {
+    match title="impala"
+    open-floating true
+    default-column-width { fixed 800; }
+    default-window-height { fixed 800; }
+}
+
+window-rule {
+    match title="wiremix"
+    open-floating true
+    default-column-width { fixed 800; }
+    default-window-height { fixed 300; }
+}
+
+window-rule {
+    match app-id="hyp.exe"
+    open-floating true
+    // default-column-width { fixed 800; }
+    // default-window-height { fixed 800; }
+}
+
+window-rule {
+    match app-id="org-tlauncher-tlauncher-rmo-TLauncher"
+    open-floating true
+    // default-column-width { fixed 800; }
+    // default-window-height { fixed 800; }
+}
+
+window-rule {
     match app-id="blueman-manager"
     open-floating true
     default-column-width { fixed 800; }

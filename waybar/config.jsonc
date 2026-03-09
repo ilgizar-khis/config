@@ -8,22 +8,19 @@
     // Choose the order of the modules
     "modules-left": [
         "niri/workspaces",
-        "niri/mode",
-        "niri/scratchpad",
         "custom/media"
     ],
     "modules-center": [
         "niri/window"
     ],
     "modules-right": [
+        "niri/language",
         "mpd",
         "idle_inhibitor",
-        "pulseaudio",
-        "keyboard-state",
-        "niri/language",
         "battery",
         "clock",
         "tray",
+        "custom/info"
     ],
     // Modules configuration
     // "niri/workspaces": {
@@ -50,6 +47,10 @@
             "locked": "",
             "unlocked": ""
         }
+    },
+    "custom/info": {
+        "format": "info",
+        "on-click": "~/config/info.bash"
     },
     "niri/mode": {
         "format": "<span style=\"italic\">{}</span>"
@@ -135,8 +136,8 @@
         },
         "format": "{capacity}% {icon}",
         "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
@@ -182,7 +183,7 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
+        "on-click": "kitty --title wiremix wiremix"
     },
     "custom/media": {
         "format": "{icon} {text}",
