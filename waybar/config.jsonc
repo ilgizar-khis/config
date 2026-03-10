@@ -19,8 +19,8 @@
         "idle_inhibitor",
         "battery",
         "clock",
+        "custom/info",
         "tray",
-        "custom/info"
     ],
     // Modules configuration
     // "niri/workspaces": {
