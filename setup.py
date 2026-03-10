@@ -9,15 +9,17 @@ targets: dict[str, str] = {
     "vimrc": "-.vimrc",
     "nvim": ".config/nvim",
     "kitty": ".config/kitty",
-    "polybar": ".config/polybar",
+    "polybar": "-.config/polybar",
     "vifm": ".config/vifm",
     "i3": "-.config/i3",
-    "bspwmrc.sh": ".config/bspwm/bspwmrc",
-    "sxhkdrc": ".config/sxhkd/sxhkdrc"
+    "bspwmrc.sh": "-.config/bspwm/bspwmrc",
+    "sxhkdrc": "-.config/sxhkd/sxhkdrc",
+    "niri": ".config/niri",
+    "waybar": ".config/waybar",
 }
 
 
-safe_mod = False
+safe_mod = True
 if safe_mod:
     print("safe mod enabled")
 else:
@@ -25,7 +27,7 @@ else:
     safe_mod = input("Your want enable safe mod?").lower() in ("y", "yes")
 for source, target in targets.items():
     if target[0] == "-":
-        print(current_dir+ source, "ignored")
+        print(current_dir + source, "ignored")
         continue
     if os.path.exists(home + target) and not safe_mod:
         if os.path.isdir(home + target):
@@ -35,7 +37,6 @@ for source, target in targets.items():
                 shutil.rmtree(home + target)
         else:
             os.remove(home + target)
-    print(current_dir + source, "->", home+ target)
+    print(current_dir + source, "->", home + target)
     if not safe_mod:
         os.symlink(current_dir + source, home + target)
-

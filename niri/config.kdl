@@ -270,8 +270,8 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
-spawn-sh-at-startup "swaybg -o eDP-1 -i ~/Pictures/.bg/33.png -m fill"
-spawn-sh-at-startup "swaybg -o HDMI-A-1 -i ~/Pictures/.bg/6.jpeg -m fill"
+spawn-sh-at-startup "swaybg -o HDMI-A-1 -i ~/Pictures/.bg/30.png -m fill"
+spawn-sh-at-startup "swaybg -o eDP-1 -i ~/Pictures/.bg/20.jpg -m fill"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -313,6 +313,13 @@ animations {
 
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
+
+window-rule {
+    match app-id="firefox"
+    match app-id="kitty"
+    open-maximized true
+}
+
 window-rule {
     // This regular expression is intentionally made as specific as possible,
     // since this is the default config, and we want no false positives.
@@ -321,15 +328,16 @@ window-rule {
     default-column-width {}
 }
 
-window-rule {
-    match title="INFO window"
-    open-floating true
-    default-column-width { fixed 200; }
-    default-window-height { fixed 100; }
-}
+// window-rule {
+//     match title="INFO window"
+//     open-floating true
+//     default-column-width { fixed 200; }
+//     default-window-height { fixed 100; }
+// }
 
 window-rule {
     match title="impala"
+    match app-id="blueman-manager"
     open-floating true
     default-column-width { fixed 800; }
     default-window-height { fixed 800; }
@@ -343,24 +351,12 @@ window-rule {
 }
 
 window-rule {
-    match app-id="hyp.exe"
-    open-floating true
-    // default-column-width { fixed 800; }
-    // default-window-height { fixed 800; }
-}
-
-window-rule {
     match app-id="org-tlauncher-tlauncher-rmo-TLauncher"
+    match app-id="hyp.exe"
+    match app-id="PortProton"
     open-floating true
     // default-column-width { fixed 800; }
     // default-window-height { fixed 800; }
-}
-
-window-rule {
-    match app-id="blueman-manager"
-    open-floating true
-    default-column-width { fixed 800; }
-    default-window-height { fixed 800; }
 }
 
 // Open the Firefox picture-in-picture player as floating by default.
