@@ -317,6 +317,7 @@ animations {
 window-rule {
     match app-id="firefox"
     match app-id="kitty"
+    match app-id="google-chrome"
     open-maximized true
 }
 
@@ -354,6 +355,8 @@ window-rule {
     match app-id="org-tlauncher-tlauncher-rmo-TLauncher"
     match app-id="hyp.exe"
     match app-id="PortProton"
+    match app-id="nwg-look"
+    // match app-id="yad"
     open-floating true
     // default-column-width { fixed 800; }
     // default-window-height { fixed 800; }

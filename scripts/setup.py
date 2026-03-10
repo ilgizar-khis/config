@@ -1,9 +1,10 @@
 import os
 import shutil
 
-current_dir = os.path.dirname(__file__) + "/"
+script_dir = os.path.dirname(__file__) + "/"
+config_dir = os.path.abspath(script_dir + "/..") + "/"
 home = str(os.getenv("HOME")) + "/"
-print(home)
+
 targets: dict[str, str] = {
     "bg": "Pictures/.bg",
     "vimrc": "-.vimrc",
@@ -25,9 +26,10 @@ if safe_mod:
 else:
     print("safe mod disabled")
     safe_mod = input("Your want enable safe mod?").lower() in ("y", "yes")
+
 for source, target in targets.items():
     if target[0] == "-":
-        print(current_dir + source, "ignored")
+        # print(config_dir + source, "ignored")
         continue
     if os.path.exists(home + target) and not safe_mod:
         if os.path.isdir(home + target):
@@ -37,6 +39,6 @@ for source, target in targets.items():
                 shutil.rmtree(home + target)
         else:
             os.remove(home + target)
-    print(current_dir + source, "->", home + target)
+    print(config_dir + source, "->", home + target)
     if not safe_mod:
-        os.symlink(current_dir + source, home + target)
+        os.symlink(config_dir + source, home + target)

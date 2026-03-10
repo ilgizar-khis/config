@@ -19,7 +19,6 @@
         "idle_inhibitor",
         "battery",
         "clock",
-        "custom/info",
         "tray",
     ],
     // Modules configuration
