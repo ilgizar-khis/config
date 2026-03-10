@@ -1,6 +1,6 @@
 # readme
 
-**установка шрифта**
+**установка раскладки**
 ```
-    localectl --no-convert set-x11-keymap us,ru pc105 "" grp:win_space_toggle
+localectl --no-convert set-x11-keymap us,ru pc105 "" grp:win_space_toggle
 ```
