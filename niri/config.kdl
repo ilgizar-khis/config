@@ -197,7 +197,7 @@ layout {
         // If you enable the border, you probably want to disable the focus ring.
         off
 
-        width 4
+        width 1
         active-color "#ffc87f"
         inactive-color "#505050"
 
@@ -318,6 +318,7 @@ window-rule {
     match app-id="firefox"
     match app-id="kitty"
     match app-id="google-chrome"
+    match app-id="Minecraft* 1.21.11"
     open-maximized true
 }
 
@@ -354,8 +355,10 @@ window-rule {
 window-rule {
     match app-id="org-tlauncher-tlauncher-rmo-TLauncher"
     match app-id="hyp.exe"
+    match app-id="steam_proton"
     match app-id="PortProton"
     match app-id="nwg-look"
+    match app-id="yad"
     // match app-id="yad"
     open-floating true
     // default-column-width { fixed 800; }
