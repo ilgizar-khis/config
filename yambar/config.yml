@@ -1,18 +1,100 @@
-bar:
-  height: 30
-  location: top
-  background: 000000ff
+bar: 
+    monitor: HDMI-A-1
+    location: top
+    height: 30
+    background: 000000ff
+    left:
+      - script:
+          path: ~/config/yambar/workspaces.py
+          args: ["HDMI-A-1"]
+          poll-interval: 250
+          content:
+            list:
+              font: "FiraCode Nerd Font Mono:style=Bold:size=16"
+              spacing: 1
+              items:
+                - map: # workspace 1
+                    default:
+                      string:
+                        text: " 1 "
+                    conditions:
+                      ws1:
+                        string:
+                          text: " 1 "
+                          foreground: 000000ff
+                          deco:
+                            background:
+                              color: "ffffffff"
+                - map: # workspace 2
+                    default:
+                      string:
+                        text: " 2 "
+                    conditions:
+                      ws2:
+                        string:
+                          deco:
+                            background:
+                              color: ffffffff
+                          text: " 2 "
+                          foreground: 000000ff
+                - map: # workspace 3
+                    default:
+                      string:
+                        text: " 3 "
+                    conditions:
+                      ws3:
+                        string:
+                          text: " 3 "
+                          foreground: 000000ff
+                          
+                          deco:
+                            background:
+                              color: ffffffff
+                - map: # workspace 4
+                    default:
+                      string:
+                        text: " 4 "
+                    conditions:
+                      ws4:
+                        string:
+                          text: " 4 "
+                          foreground: 000000ff
+                          
+                          deco:
+                            background:
+                              color: ffffffff
+                - map: # workspace 5
+                    default:
+                      string:
+                        text: " 5 "
+                    conditions:
+                      ws5:
+                        string:
+                          text: " 5 "
+                          foreground: 000000ff
+                          
+                          deco:
+                            background:
+                              color: ffffffff
+    center:
+      - script:
+          path: ~/config/yambar/window.py
+          poll-interval: 250
+          content:
+            string:
+              text: "{window}"
+              font: "FiraCode Nerd Font Mono:style=Bold:size=16"
 
-  right:
-    - clock:
-        content:
-          string:
-            text: " {date}, {time} "
-            font: "Agave Nerd Font Mono:style=Bold:size=16"
-
-    - script:
-        path: ~/config/yambar/hello.py
-        poll-interval: 250
-        content:
-          string:
-            text: "text: {python_script}"
+    right:
+      - script:
+          path: ~/config/yambar/kb.py
+          poll-interval: 250
+          content:
+            string:
+              text: "{layout}"
+              font: "FiraCode Nerd Font Mono:style=Bold:size=16"
+      - clock:
+          content:
+            string:
+              text: " {date}, {time} "
+              font: "FiraCode Nerd Font Mono:style=Bold:size=16"
