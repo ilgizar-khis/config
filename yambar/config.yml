@@ -1,0 +1,18 @@
+bar:
+  height: 30
+  location: top
+  background: 000000ff
+
+  right:
+    - clock:
+        content:
+          string:
+            text: " {date}, {time} "
+            font: "Agave Nerd Font Mono:style=Bold:size=16"
+
+    - script:
+        path: ~/config/yambar/hello.py
+        poll-interval: 250
+        content:
+          string:
+            text: "text: {python_script}"

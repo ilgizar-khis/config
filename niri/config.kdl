@@ -111,7 +111,7 @@ input {
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 10
+    gaps 15
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -268,9 +268,13 @@ layout {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
-spawn-at-startup "waybar"
+// spawn-at-startup "waybar"
+// spawn-at-startup "ironbar"
+spawn-at-startup "yambar"
+// spawn-at-startup "~/config/zelbar/launch.sh"
 spawn-at-startup "mako"
-spawn-sh-at-startup "swaybg -o HDMI-A-1 -i ~/Pictures/.bg/30.png -m fill"
+// spawn-sh-at-startup "swaybg -o HDMI-A-1 -i ~/Pictures/.bg/30.png -m fill"
+spawn-sh-at-startup "mpvpaper -o 'no-audio --loop-playlist shuffle' HDMI-A-1 config/bg/Video/tree.mp4"
 spawn-sh-at-startup "swaybg -o eDP-1 -i ~/Pictures/.bg/20.jpg -m fill"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
@@ -306,7 +310,7 @@ animations {
     // off
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
-    // slowdown 3.0
+    slowdown 3.0
 }
 
 // Window rules let you adjust behavior for individual windows.
@@ -321,6 +325,7 @@ window-rule {
     match app-id="kitty"
     match app-id="google-chrome"
     match app-id="Minecraft* 1.21.11"
+    match app-id="codium"
     open-maximized true
 }
 
@@ -341,6 +346,7 @@ window-rule {
 
 window-rule {
     match title="impala"
+    match title="calcurse"
     match app-id="blueman-manager"
     open-floating true
     default-column-width { fixed 800; }
