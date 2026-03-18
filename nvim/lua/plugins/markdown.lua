@@ -14,12 +14,6 @@ return {
     },
   },
 
-  -- Grip for GitHub-style preview
-  {
-    "rhysd/vim-grip",
-    ft = "markdown",
-  },
-
   -- Better markdown editing experience
   {
     "iamcco/markdown-preview.nvim",
