@@ -15,11 +15,7 @@
     ],
     "modules-right": [
         "niri/language",
-        "mpd",
-        "idle_inhibitor",
-        "battery",
         "clock",
-        "tray",
     ],
     // Modules configuration
     // "niri/workspaces": {

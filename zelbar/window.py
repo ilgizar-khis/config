@@ -8,7 +8,7 @@ window = subprocess.run(
 
 if "App ID" in window:
     output = window.split("\n")[2].replace("App ID: ", "").replace('"', "")
-    print(f"window|string| |{output} ")
+    print(f" {output} ")
 else:
-    print(f"window|string|| NiriWM ")
+    print(f"NiriWM ")
 print()

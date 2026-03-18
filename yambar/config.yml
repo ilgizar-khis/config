@@ -2,7 +2,7 @@ bar:
     monitor: HDMI-A-1
     location: top
     height: 30
-    background: 000000ff
+    background: 232323ff
     left:
       - script:
           path: ~/config/yambar/workspaces.py
@@ -13,6 +13,8 @@ bar:
               font: "FiraCode Nerd Font Mono:style=Bold:size=16"
               spacing: 1
               items:
+                - string:
+                    text: "|"
                 - map: # workspace 1
                     default:
                       string:
@@ -25,6 +27,8 @@ bar:
                           deco:
                             background:
                               color: "ffffffff"
+                - string:
+                    text: "|"
                 - map: # workspace 2
                     default:
                       string:
@@ -37,6 +41,8 @@ bar:
                               color: ffffffff
                           text: " 2 "
                           foreground: 000000ff
+                - string:
+                    text: "|"
                 - map: # workspace 3
                     default:
                       string:
@@ -50,6 +56,8 @@ bar:
                           deco:
                             background:
                               color: ffffffff
+                - string:
+                    text: "|"
                 - map: # workspace 4
                     default:
                       string:
@@ -63,6 +71,8 @@ bar:
                           deco:
                             background:
                               color: ffffffff
+                - string:
+                    text: "|"
                 - map: # workspace 5
                     default:
                       string:
@@ -76,7 +86,18 @@ bar:
                           deco:
                             background:
                               color: ffffffff
+                - string:
+                    text: "|"
     center:
+      - script:
+          path: ~/config/yambar/clock.sh
+          poll-interval: 1000
+          content:
+            string:
+              text: "| {date}, {time} |"
+              font: "FiraCode Nerd Font Mono:style=Bold:size=16"
+
+    right:
       - script:
           path: ~/config/yambar/window.py
           poll-interval: 250
@@ -84,17 +105,10 @@ bar:
             string:
               text: "{window}"
               font: "FiraCode Nerd Font Mono:style=Bold:size=16"
-
-    right:
       - script:
           path: ~/config/yambar/kb.py
           poll-interval: 250
           content:
             string:
               text: "{layout}"
-              font: "FiraCode Nerd Font Mono:style=Bold:size=16"
-      - clock:
-          content:
-            string:
-              text: " {date}, {time} "
               font: "FiraCode Nerd Font Mono:style=Bold:size=16"
