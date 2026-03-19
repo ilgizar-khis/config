@@ -326,6 +326,7 @@ window-rule {
     match app-id="google-chrome"
     match app-id="Minecraft* 1.21.11"
     match app-id="codium"
+    match app-id="com.obsproject.Studio"
     open-maximized true
 }
 

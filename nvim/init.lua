@@ -3,7 +3,8 @@ require("config.lazy")
 require("config.init")
 require("config.mappings")
 require("config.jdtls")
-require("config.ui")
+require("config.neoui")
+-- require("config.ui")
 
 require("luasnip.loaders.from_vscode").lazy_load({
     paths = { vim.fn.stdpath("config") .. "/snips" }
