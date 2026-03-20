@@ -8,12 +8,12 @@ while [ true ]; do
 
     bar+="%{c}"
     # bar+="$(~/config/zelbar/window.py)"
+    bar+="$(~/config/zelbar/date.sh)"
 
     bar+="%{r}"
     bar+="$(~/config/zelbar/kb.py)"
-    bar+="$(~/config/zelbar/date.sh)"
 
     echo "$bar"
     bar=""
-    sleep 0.3
+    sleep 0.25
 done
