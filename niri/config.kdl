@@ -273,9 +273,9 @@ layout {
 // spawn-at-startup "yambar"
 spawn-at-startup "~/config/zelbar/launch.sh"
 spawn-at-startup "mako"
-spawn-sh-at-startup "swaybg -o HDMI-A-1 -i ~/Pictures/.bg/7.png -m fill"
+spawn-sh-at-startup "swaybg -o HDMI-A-1 -i ~/config/hdmi-a-1.png -m fill"
 // spawn-sh-at-startup "mpvpaper -o 'no-audio --loop-playlist shuffle' HDMI-A-1 config/bg/Video/tree.mp4"
-spawn-sh-at-startup "swaybg -o eDP-1 -i ~/Pictures/.bg/24.jpg -m fill"
+spawn-sh-at-startup "swaybg -o eDP-1 -i ~/config/edp-1.jpg -m fill"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
