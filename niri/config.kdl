@@ -273,6 +273,8 @@ spawn-at-startup "waybar"
 // spawn-at-startup "yambar"
 // spawn-at-startup "~/config/zelbar/launch.sh"
 spawn-at-startup "mako"
+spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
+spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
 spawn-sh-at-startup "swaybg -o HDMI-A-1 -i ~/backgrounds/7.png -m fill"
 // spawn-sh-at-startup "mpvpaper -o 'no-audio --loop-playlist shuffle' HDMI-A-1 config/bg/Video/tree.mp4"
 spawn-sh-at-startup "swaybg -o eDP-1 -i ~/backgrounds/24.jpg -m fill"
@@ -348,9 +350,10 @@ window-rule {
 window-rule {
     match title="impala"
     match title="calcurse"
+    match title="Расположение"
     match app-id="blueman-manager"
     open-floating true
-    default-column-width { fixed 800; }
+    default-column-width { fixed 1000; }
     default-window-height { fixed 800; }
 }
 
@@ -422,7 +425,7 @@ binds {
     Super+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Super+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
+    Super+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
     Super+D hotkey-overlay-title="Run an Application: fuzzel" { spawn-sh "rofi -show drun"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 

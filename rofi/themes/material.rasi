@@ -1,6 +1,8 @@
 * {
     fg: #FFFFFF;
     bg: #333333;
+    sfg: #000000;
+    sbg: #aaaaaa;
     ffg: #000000;
     fbg: #FFFFFF;
 
@@ -74,6 +76,8 @@ element {
     padding: 5px;
     spacing: 5px;
 	highlight: bold underline;
+    text-color: @sfg;
+    background-color: @sbg;
 	children: [element-icon, element-text];
 }
 element-text, element-icon {

@@ -1,5 +1,5 @@
 configuration {
-    modi: "drun,window,run";
+    modi: "drun,window,clipboard:~/config/rofi/cliphist-rofi-img.sh,calc,wifi:~/rofi-iwd-wifi-menu/iwdrofimenu.py,run";
     side-bar: true;
     lines: 0;
 }
