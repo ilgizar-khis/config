@@ -1,7 +1,14 @@
 configuration {
-    modi: "drun,window,clipboard:~/config/rofi/cliphist-rofi-img.sh,calc,wifi:~/rofi-iwd-wifi-menu/iwdrofimenu.py,run";
+    modi: "drun,window,translate:~/config/rofi/translate.sh,clipboard:~/config/rofi/cliphist-rofi-img.sh,calc,wifi:~/rofi-iwd-wifi-menu/iwdrofimenu.py,run";
     side-bar: true;
     lines: 0;
+    dynamic: true;
 }
 
 @theme "~/.config/rofi/themes/material.rasi"
+
+window {
+    height: 80%;
+    width: 60%;
+}
+

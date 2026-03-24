@@ -9,16 +9,10 @@ if len(sys.argv) > 1:
         print(clip_id)
         print(clip_content)
         # subprocess.run(("wl-paste"))
-    elif sys.argv[1] == "удалить":
-        print("выберите элемент")
-        text = subprocess.run(( "cliphist", "list" ), capture_output=True, text=True).stdout
-        for i in text.split("\n"):
-            print(i)
     elif sys.argv[1] == "удалить всё":
-        ...
+        subprocess.run(("cliphist", "wipe"))
 else:
-    print("удалить")
     print("удалить всё")
-    text = subprocess.run(( "cliphist", "list" ), capture_output=True, text=True).stdout
+    text = subprocess.run(("cliphist", "list"), capture_output=True, text=True).stdout
     for i in text.split("\n"):
         print(i)

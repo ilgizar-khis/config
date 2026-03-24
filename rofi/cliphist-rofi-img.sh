@@ -7,7 +7,8 @@ if [[ -n "$1" ]]; then
     if [[ "$1" == "удалить всё" ]]; then
         cliphist wipe
     else
-        cliphist decode <<<"$1" | wl-copy
+        # cliphist decode <<<"$1" | wl-copy
+        echo "$1" | sed 's/    /\t/' | cliphist decode | wl-copy
         exit
     fi
 fi
@@ -24,4 +25,4 @@ match(\$0, /^([0-9]+)\s(\[\[\s)?binary.*(jpg|jpeg|png|bmp)/, grp) {
 }
 1
 EOF
-cliphist list | gawk "$prog"
+cliphist list | gawk "$prog" | sed 's/\t/    /'
