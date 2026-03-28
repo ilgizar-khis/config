@@ -10,7 +10,7 @@
 
 window#waybar {
     background-color: #343434;
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+    /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
     color: #FFFFFF;
     transition-property: background-color;
     transition-duration: .5s;
@@ -60,7 +60,7 @@ button:hover {
 }
 
 #workspaces button {
-    padding: 0 5px;
+    padding: 0 10px;
     background-color: transparent;
     color: #FFFFFF;
 }
