@@ -1,0 +1,19 @@
+monitors:
+  HDMI-A-1:
+    position: top
+    height: 30
+    start:
+      - type: workspaces
+        # name_map:
+        #   1: "<"
+        all_monitors: false
+    center:
+      - type: clock
+        format: "%d %B %Y, %H:%M:%S"
+    end:
+      - type: keyboard
+        show_scroll: false
+        icons:
+          layout_map:
+            "English (US)": "EN"
+            "Russian": RU

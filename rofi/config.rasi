@@ -1,5 +1,5 @@
 configuration {
-    modi: "drun,window,translate:~/config/rofi/translate.sh,clipboard:~/config/rofi/cliphist-rofi-img.sh,calc,wifi:~/rofi-iwd-wifi-menu/iwdrofimenu.py,run";
+    modi: "drun,window,calc,system:~/config/rofi/system.sh,run";
     side-bar: true;
     lines: 0;
     dynamic: true;

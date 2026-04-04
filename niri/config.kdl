@@ -268,8 +268,8 @@ layout {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
-spawn-at-startup "waybar"
-// spawn-at-startup "ironbar"
+// spawn-at-startup "waybar"
+spawn-at-startup "ironbar"
 // spawn-at-startup "yambar"
 // spawn-at-startup "~/config/zelbar/launch.sh"
 spawn-at-startup "mako"
