@@ -1,0 +1,7 @@
+require("config.init")
+require("config.keymaps")
+require("config.lsp")
+require("config.ui")
+require("config.tree")
+require("config.pairs")
+require("config.line")
