@@ -7,7 +7,7 @@ require("bufferline").setup({
     options = {
         show_buffer_close_icons = false,
         show_close_icon = false,
-        separator_style = "slant"
+        -- separator_style = "slant"
     }
 })
 
@@ -18,13 +18,15 @@ require('lualine').setup {
     component_separators = { left = '|', right = '|'},
     section_separators = { left = '|', right = '|'},
     disabled_filetypes = {
-      statusline = {},
+      statusline = {
+          "neo-%tree"
+      },
       winbar = {},
     },
     ignore_focus = {},
     always_divide_middle = true,
     always_show_tabline = true,
-    globalstatus = false,
+    globalstatus = true,
     refresh = {
       statusline = 1000,
       tabline = 1000,
