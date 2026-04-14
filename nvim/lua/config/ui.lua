@@ -1,4 +1,3 @@
-vim.cmd("colorscheme retrobox")
 
 -- require("vim._core.ui2").enable({})
 vim.opt.cmdheight = 0

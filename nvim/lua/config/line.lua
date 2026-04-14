@@ -4,18 +4,6 @@ vim.pack.add {
 }
 
 require("bufferline").setup({
-    highlights = {
-        buffer_selected = {
-            fg = "#000000",
-            bg = "#565656",
-            bold = true,
-        },
-        buffer_visible = {
-            fg = "#ffffff",
-            bg = "#232323",
-            bold = true,
-        },
-    },
     options = {
         show_buffer_close_icons = false,
         show_close_icon = false,

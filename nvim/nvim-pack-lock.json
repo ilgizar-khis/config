@@ -12,9 +12,17 @@
       "rev": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3",
       "src": "https://github.com/akinsho/bufferline.nvim.git"
     },
+    "catppuccin": {
+      "rev": "426dbebe06b5c69fd846ceb17b42e12f890aedf1",
+      "src": "https://github.com/catppuccin/nvim"
+    },
     "efmls-configs-nvim": {
       "rev": "5dc52088c231f2721f545570fcb541b04802ce6b",
       "src": "https://github.com/creativenull/efmls-configs-nvim"
+    },
+    "ergoterm.nvim": {
+      "rev": "0fd6870bbbd3de5ab198bff0fceaa6f694ead01c",
+      "src": "https://github.com/waiting-for-dev/ergoterm.nvim.git"
     },
     "fzf-lua": {
       "rev": "114da56bb1b14b4aec073123fc1ef9346469967e",
@@ -92,6 +100,10 @@
     "staline.nvim": {
       "rev": "d337bc9b343df3328921ef4c3f8ff604102d0201",
       "src": "https://github.com/tamton-aquib/staline.nvim.git"
+    },
+    "tokyonight.nvim": {
+      "rev": "cdc07ac78467a233fd62c493de29a17e0cf2b2b6",
+      "src": "https://github.com/folke/tokyonight.nvim.git"
     }
   }
 }
