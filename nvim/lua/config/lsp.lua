@@ -18,6 +18,12 @@ require("mason-lspconfig").setup({
 require("blink.cmp").setup({
     fuzzy = {
         implementation = "lua"
+    },
+    keymap = {
+        preset = "default",
+        [ "<Tab>" ] = { "select_next", "fallback" },
+        [ "<S-Tab>" ] = { "select_prev", "fallback" },
+        [ "<S-CR>" ] = { "select_and_accept", "fallback" },
     }
 })
 
