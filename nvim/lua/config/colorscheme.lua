@@ -6,7 +6,7 @@ vim.pack.add {
 
 -- Default options:
 require("gruvbox").setup({
-  terminal_colors = true, -- add neovim terminal colors
+  terminal_colors = false, -- add neovim terminal colors
   undercurl = true,
   underline = true,
   bold = true,
@@ -18,16 +18,17 @@ require("gruvbox").setup({
     folds = true,
   },
   strikethrough = true,
-  invert_selection = false,
+  invert_selection = true,
   invert_signs = false,
   invert_tabline = false,
   inverse = true, -- invert background for search, diffs, statuslines and errors
-  contrast = "soft", -- can be "hard", "soft" or empty string
+  contrast = "", -- can be "hard", "soft" or empty string
   palette_overrides = {},
   overrides = {},
   dim_inactive = false,
   transparent_mode = true ,
 })
+
 
 require('kanagawa').setup({
     compile = false,             -- enable compiling the colorscheme
@@ -56,3 +57,5 @@ require('kanagawa').setup({
 
 -- setup must be called before loading
 vim.cmd("colorscheme gruvbox")
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#111111" })
+-- vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#ffffff" })

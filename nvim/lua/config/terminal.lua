@@ -8,7 +8,9 @@ ergoterm.setup({
     float_opts = {
         height = 40,
         width = 160,
-        border = "none",
+        border = "",
+        title = "",
+        title_pos = "center",
     },
     float_winblend = 0,
     cleanup_on_success = false,
