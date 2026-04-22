@@ -8,17 +8,13 @@ require("bufferline").setup({
 		mode = "buffers",
 		show_buffer_close_icons = false,
 		show_close_icon = false,
-		separator_style = "slant",
+		separator_style = { "", "" }, -- "thick",
 		modified_icon = "●",
 	},
 	highlights = {
 		fill = {
-			fg = "#000000",
+			fg = "#abcdef",
 			bg = "#3C3836",
-		},
-		modified_visible = {
-			fg = "#ABCDEF",
-			bg = "#ABCDEF",
 		},
 		modified_selected = {
 			fg = "#000000",
