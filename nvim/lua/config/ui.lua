@@ -1,4 +1,3 @@
-
 -- require("vim._core.ui2").enable({})
 vim.opt.cmdheight = 0
 
@@ -8,3 +7,4 @@ vim.opt.termguicolors = true
 
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.signcolumn = "yes"

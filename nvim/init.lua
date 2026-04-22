@@ -1,4 +1,5 @@
 require("config.init")
+require("config.http")
 require("config.keymaps")
 require("config.lsp")
 require("config.ui")
