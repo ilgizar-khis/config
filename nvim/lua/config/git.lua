@@ -1,6 +1,7 @@
 vim.pack.add({
 	{ src = "https://github.com/NeogitOrg/neogit.git" },
 	{ src = "https://github.com/lewis6991/gitsigns.nvim.git" },
+	{ src = "https://github.com/tpope/vim-fugitive.git" },
 })
 
 require("gitsigns").setup({

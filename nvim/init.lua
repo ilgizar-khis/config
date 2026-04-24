@@ -15,3 +15,6 @@ require("config.formatter")
 require("config.image")
 require("config.markdown")
 require("config.telescope")
+require("config.colorizer")
+
+require("config.ts")

@@ -3,51 +3,26 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-lualine/lualine.nvim.git" },
 })
 
+local theme = require("colors.mono_lualine")
+
 require("bufferline").setup({
 	options = {
-		mode = "buffers",
 		show_buffer_close_icons = false,
 		show_close_icon = false,
-		separator_style = { "", "" }, -- "thick",
+		separator_style = "thick",
 		modified_icon = "●",
-	},
-	highlights = {
-		fill = {
-			fg = "#abcdef",
-			bg = "#3C3836",
-		},
-		modified_selected = {
-			fg = "#000000",
-			bg = "#A89984",
-			bold = true,
-		},
-		background = {
-			fg = "#878787",
-			bg = "#000000",
-		},
-		buffer_visible = {
-			fg = "#FFFFFF",
-			bg = "#000000",
-		},
-		buffer_selected = {
-			fg = "#000000",
-			bg = "#A89984",
-			bold = true,
-			italic = true,
-		},
 	},
 })
 
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
-		theme = "auto",
+		theme = theme,
+		-- theme = "lackluster",
 		component_separators = { left = "|", right = "|" },
 		section_separators = { left = "|", right = "|" },
 		disabled_filetypes = {
-			statusline = {
-				"neo-%tree",
-			},
+			statusline = {},
 			winbar = {},
 		},
 		ignore_focus = {},

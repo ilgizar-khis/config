@@ -5,7 +5,7 @@ vim.pack.add({
 	{ src = "https://github.com/saghen/blink.cmp.git" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter.git" },
 })
-
+vim.pack.add({ 'https://github.com/saghen/blink.lib' })
 -- vim.opt.completeopt = { "menuone", "noselect", "popup", "fuzzy" }
 
 vim.lsp.document_color.enable()

@@ -1,6 +1,4 @@
 vim.pack.add({
-	{ src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
-	{ src = "https://github.com/rebelot/kanagawa.nvim.git" },
 	{ src = "https://github.com/ellisonleao/gruvbox.nvim.git" },
 })
 
@@ -29,32 +27,70 @@ require("gruvbox").setup({
 	transparent_mode = true,
 })
 
-require("kanagawa").setup({
-	compile = false, -- enable compiling the colorscheme
-	undercurl = true, -- enable undercurls
-	commentStyle = { italic = true },
-	functionStyle = {},
-	keywordStyle = { italic = true },
-	statementStyle = { bold = true },
-	typeStyle = {},
-	transparent = false, -- do not set background color
-	dimInactive = false, -- dim inactive window `:h hl-NormalNC`
-	terminalColors = true, -- define vim.g.terminal_color_{0,17}
-	colors = { -- add/modify theme and palette colors
-		palette = {},
-		theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
+vim.pack.add({ "https://github.com/thesimonho/kanagawa-paper.nvim.git" })
+-- setup must be called before loading
+require("kanagawa-paper").setup({
+	-- enable undercurls for underlined text
+	undercurl = true,
+	-- transparent background
+	transparent = true,
+	-- highlight background for the left gutter
+	gutter = false,
+	-- background for diagnostic virtual text
+	diag_background = true,
+	-- dim inactive windows. Disabled when transparent
+	dim_inactive = true,
+	-- set colors for terminal buffers
+	terminal_colors = true,
+	-- cache highlights and colors for faster startup.
+	-- see Cache section for more details.
+	cache = false,
+
+	styles = {
+		-- style for comments
+		comment = { italic = true },
+		-- style for functions
+		functions = { italic = false },
+		-- style for keywords
+		keyword = { italic = false, bold = false },
+		-- style for statements
+		statement = { italic = false, bold = false },
+		-- style for types
+		type = { italic = false },
 	},
-	overrides = function(colors) -- add/modify highlights
+	-- override default palette and theme colors
+	colors = {
+		palette = {},
+		theme = {
+			ink = {},
+			canvas = {},
+		},
+	},
+	-- adjust overall color balance for each theme [-1, 1]
+	color_balance = {
+		ink = { brightness = 0, saturation = 0 },
+		canvas = { brightness = 0, saturation = 0 },
+	},
+	-- override highlight groups
+	overrides = function(colors)
 		return {}
 	end,
-	theme = "dragon", -- Load "wave" theme
-	background = { -- map the value of 'background' option to a theme
-		dark = "wave", -- try "dragon" !
-		light = "lotus",
+
+	-- uses lazy.nvim, if installed, to automatically enable needed plugins
+	auto_plugins = true,
+	-- enable highlights for all plugins (disabled if using lazy.nvim)
+	all_plugins = package.loaded.lazy == nil,
+	-- manually enable/disable individual plugins.
+	-- check the `groups/plugins` directory for the exact names
+	plugins = {
+		-- examples:
+		-- rainbow_delimiters = true
+		-- which_key = false
 	},
 })
 
--- setup must be called before loading
-vim.cmd("colorscheme gruvbox")
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#111111" })
--- vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#ffffff" })
+vim.cmd("colorscheme kanagawa-paper-ink")
+
+vim.api.nvim_set_hl(0, "StatusLine", { bg = "none" })
+vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { bg = "none" })
