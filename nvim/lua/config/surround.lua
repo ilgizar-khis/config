@@ -1,3 +1,3 @@
-vim.pack.add {
-    { src = "https://github.com/kylechui/nvim-surround.git" }
-}
+vim.pack.add({
+	{ src = "https://github.com/kylechui/nvim-surround.git" },
+})
