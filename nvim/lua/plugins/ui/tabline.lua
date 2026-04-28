@@ -1,24 +1,19 @@
-vim.pack.add({
-	{ src = "https://github.com/akinsho/bufferline.nvim.git" },
+vim.pack.add({ "https://github.com/nvim-mini/mini.tabline.git" })
+
+local MiniTabline = require("mini.tabline")
+MiniTabline.setup({
+	format = function(buf_id, label)
+		local suffix = vim.bo[buf_id].modified and "[+]" or "[ ]"
+		return " " .. MiniTabline.default_format(buf_id, label) .. suffix
+	end,
 })
 
-require("bufferline").setup({
-	options = {
-		show_buffer_close_icons = false,
-		show_close_icon = false,
-		separator_style = "slant",
-		modified_icon = "●",
-	},
-	highlights = {
-		fill = {
-			bg = "#000000",
-		},
-		background = {
-			bg = "#000000",
-		},
-		buffer_selected = {
-			bg = "#343434",
-			bold = true,
-		},
-	},
-})
+local sel_hl = { bg = "none", fg = "#ffffff", bold = true }
+local hl = { bg = "none", fg = "#888899" }
+
+vim.api.nvim_set_hl(0, "MiniTablineCurrent", sel_hl)
+vim.api.nvim_set_hl(0, "MiniTablineVisible", sel_hl)
+vim.api.nvim_set_hl(0, "MiniTablineHidden", hl)
+vim.api.nvim_set_hl(0, "MiniTablineModifiedCurrent", sel_hl)
+vim.api.nvim_set_hl(0, "MiniTablineModifiedVisible", sel_hl)
+vim.api.nvim_set_hl(0, "MiniTablineModifiedHidden", hl)

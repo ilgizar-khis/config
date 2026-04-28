@@ -1,60 +1,20 @@
-vim.pack.add({
-	{ src = "https://github.com/nvim-lualine/lualine.nvim.git" },
-})
+vim.pack.add({ "https://github.com/nvim-mini/mini.statusline.git" })
 
-local theme = require("colors.mono_lualine")
-require("lualine").setup({
-	options = {
-		icons_enabled = true,
-		theme = theme,
-		-- theme = "lackluster",
-		component_separators = { left = "|", right = "|" },
-		section_separators = { left = "|", right = "|" },
-		disabled_filetypes = {
-			statusline = {},
-			winbar = {},
-		},
-		ignore_focus = {},
-		always_divide_middle = true,
-		always_show_tabline = true,
-		globalstatus = true,
-		refresh = {
-			statusline = 1000,
-			tabline = 1000,
-			winbar = 1000,
-			refresh_time = 16, -- ~60fps
-			events = {
-				"WinEnter",
-				"BufEnter",
-				"BufWritePost",
-				"SessionLoadPost",
-				"FileChangedShellPost",
-				"VimResized",
-				"Filetype",
-				"CursorMoved",
-				"CursorMovedI",
-				"ModeChanged",
-			},
-		},
-	},
-	sections = {
-		lualine_a = { "mode" },
-		lualine_b = { "branch", "diff", "diagnostics" },
-		lualine_c = { "filename" },
-		lualine_x = { "encoding", "fileformat", "filetype" },
-		lualine_y = { "progress" },
-		lualine_z = { "location" },
-	},
-	inactive_sections = {
-		lualine_a = {},
-		lualine_b = {},
-		lualine_c = { "filename" },
-		lualine_x = { "location" },
-		lualine_y = {},
-		lualine_z = {},
-	},
-	tabline = {},
-	winbar = {},
-	inactive_winbar = {},
-	extensions = {},
-})
+local MiniStatusline = require("mini.statusline")
+MiniStatusline.setup({})
+
+local normal_hl = { bg = "none", fg = "#ffffff", bold = true }
+local insert_hl = { bg = "none", fg = "#ffccaa", bold = true }
+local visual_hl = { bg = "none", fg = "#aaccff", bold = true }
+local other_hl = { bg = "none", fg = "#888899" }
+local command_hl = { bg = "none", fg = "#ccffaa", bold = true }
+local replace_hl = { bg = "none", fg = "#ffffaa", bold = true }
+
+vim.api.nvim_set_hl(0, "MiniStatuslineModeNormal", normal_hl)
+vim.api.nvim_set_hl(0, "MiniStatuslineModeInsert", insert_hl)
+vim.api.nvim_set_hl(0, "MiniStatuslineModeVisual", visual_hl)
+vim.api.nvim_set_hl(0, "MiniStatuslineModeReplace", replace_hl)
+vim.api.nvim_set_hl(0, "MiniStatuslineModeCommand", command_hl)
+vim.api.nvim_set_hl(0, "MiniStatuslineModeOther", other_hl)
+
+vim.api.nvim_set_hl(0, "MiniStatuslineFilename", other_hl)
