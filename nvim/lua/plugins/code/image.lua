@@ -62,7 +62,7 @@ require("focal").setup({
 	enabled = true,
 
 	-- Window appearance
-	border = "rounded", -- border style (any valid nvim_open_win border)
+	border = "single", -- border style (any valid nvim_open_win border)
 	winblend = 0, -- transparency (0-100)
 	zindex = 100, -- float stacking order
 	title = true, -- show filename in border
@@ -76,7 +76,7 @@ require("focal").setup({
 	max_height_percent = 50, -- max height as % of editor
 
 	-- Performance
-	max_file_size_mb = 5, -- skip files larger than this
+	max_file_size_mb = 0.5, -- skip files larger than this
 	debounce_ms = 0, -- additional delay after CursorHold (0 = use updatetime)
 
 	-- Position
@@ -84,7 +84,7 @@ require("focal").setup({
 	row_offset = 1, -- vertical gap from cursor
 
 	-- Renderer override
-	backend = nil, -- nil/"auto" = auto, "image.nvim", or "chafa"
+	backend = "image.nvim", -- nil/"auto" = auto, "image.nvim", or "chafa"
 
 	-- Extension whitelist (nil = all renderer-declared extensions)
 	extensions = nil, -- e.g., { "png", "jpg" } to restrict
