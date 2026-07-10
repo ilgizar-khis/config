@@ -69,7 +69,7 @@ animation_curve_opafadeout=0.5,0.5,0.5,0.5
 animation_curve_opafadein=0.46,1.0,0.29,1
 
 # Scroller Layout Setting
-scroller_structs=8
+scroller_structs=10
 scroller_default_proportion=1
 scroller_focus_center=0
 scroller_prefer_center=1
