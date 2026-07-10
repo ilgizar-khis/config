@@ -26,11 +26,24 @@ Row {
 				" ": "#343434"
 			}
 
+			property var masks: {
+				0: "10",
+				1: "A",
+				2: "B",
+				3: "C",
+				4: "D",
+				5: "E",
+				6: "F",
+				7: "G",
+				8: "H",
+				9: "I"
+			}
+
 			property var texts: {
-				"*": "[" + (index + 1) + "]",
-				"!": "!" + (index + 1) + "!",
-				".": " " + (index + 1) + " ",
-				" ": " " + (index + 1) + " "
+				"*": "[" + (masks[index + 1] || index + 1) + "]",
+				"!": "!" + (masks[index + 1] || index + 1) + "!",
+				".": " " + (masks[index + 1] || index + 1) + " ",
+				" ": " " + (masks[index + 1] || index + 1) + " "
 			}
 
 			color: colors[modelData] || "#000000"
