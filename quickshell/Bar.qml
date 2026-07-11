@@ -1,17 +1,14 @@
 import QtQuick
-import QtQuick.Layouts
-import QtQuick.Controls
 import Quickshell
-import Quickshell.Services.Pipewire
-import Quickshell.Wayland
 import Quickshell.Io
+import Quickshell.Services.SystemTray
 
 PanelWindow {
     id: bar
 
     screen: Quickshell.screens[1]
 
-    property int fontSize: 18
+    property int fontSize: 16
     property string fontName: "FiraCode Nerd Font Mono"
 
     anchors {
@@ -22,7 +19,7 @@ PanelWindow {
 
     implicitHeight: 30
 
-    color: "#000000"
+    color: "#232323"
 
 	Tags {
 		id: tags
@@ -31,6 +28,7 @@ PanelWindow {
 		anchors {
 			left: parent.left
 			leftMargin: 10
+			bottom: parent.bottom
 			bottomMargin: 5
 		}
 	}
@@ -96,6 +94,8 @@ PanelWindow {
 		anchors {
 			right: parent.right
 			rightMargin: 10
+			bottom: parent.bottom
+			bottomMargin: 5
 		}
 	}
 

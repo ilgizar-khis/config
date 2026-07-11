@@ -37,13 +37,6 @@ Text {
 		}
 	}
 
-	Timer {
-		interval: 200
-		running: true
-		repeat: true
-
-		onTriggered: keymode_proc.running = true
-	}
 	IpcHandler {
 		target: "keymode"
 
