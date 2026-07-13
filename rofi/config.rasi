@@ -5,12 +5,11 @@ configuration {
     dynamic: true;
 }
 
-// @theme "/usr/share/rofi/themes/material.rasi"
-@theme "~/.config/rofi/themes/material.rasi"
+//@theme "~/config/rofi/themes/gruvbox-dark-soft.rasi"
+
+@theme "~/config/rofi/themes/arthur.rasi"
 
 window {
-    height: 80%;
-    width: 60%;
+    height: 60%;
+    width: 40%;
 }
-
-
