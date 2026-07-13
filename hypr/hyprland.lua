@@ -304,6 +304,21 @@ local function Alt(keys)
 	return key_to_str("ALT", keys)
 end
 
+local function Ctrl(keys)
+	return key_to_str("CTRL", keys)
+end
+
+-- bind=Super,Print,spawn_shell,grim - | wl-copy
+-- bind=None,Print,spawn_shell,grim -g "$(slurp)" - | wl-copy
+
+hl.bind(Super("Print"), hl.dsp.exec_cmd("hyprshot -m output --clipboard-only"))
+hl.bind(Alt("Print"), hl.dsp.exec_cmd("hyprshot -m window --clipboard-only"))
+hl.bind(Ctrl("Print"), hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))
+
+hl.bind(Super({ SHIFT, "Print" }), hl.dsp.exec_cmd("hyprshot -m output "))
+hl.bind(Alt({ SHIFT, "Print" }), hl.dsp.exec_cmd("hyprshot -m window "))
+hl.bind(Ctrl({ SHIFT, "Print" }), hl.dsp.exec_cmd("hyprshot -m region "))
+
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(Super("Return"), hl.dsp.exec_cmd(terminal))
 hl.bind(Super({ SHIFT, "Q" }), hl.dsp.window.close())
