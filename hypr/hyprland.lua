@@ -42,7 +42,7 @@ hl.monitor({
 -- Set programs that you use
 local terminal = "kitty"
 local fileManager = "thunar"
-local menu = "noctalia msg panel-toggle launcher"
+local menu = "rofi -show drun"
 local control_center = "noctalia msg panel-toggle control-center"
 local session = "noctalia msg panel-toggle session"
 local status_bar = "noctalia"
@@ -103,8 +103,8 @@ hl.config({
 		border_size = 2,
 
 		col = {
-			active_border = { colors = { "#ff6767" }, angle = 45 },
-			inactive_border = "#ababab",
+			active_border = { colors = { "#aa5555" }, angle = 0 },
+			inactive_border = "#aaaa22",
 		},
 
 		-- Set to true to enable resizing windows by clicking and dragging on borders and gaps
@@ -167,9 +167,9 @@ hl.animation({ leaf = "layersIn", enabled = true, speed = 4, bezier = "easeOutQu
 hl.animation({ leaf = "layersOut", enabled = true, speed = 1.5, bezier = "linear", style = "fade" })
 hl.animation({ leaf = "fadeLayersIn", enabled = true, speed = 1.79, bezier = "almostLinear" })
 hl.animation({ leaf = "fadeLayersOut", enabled = true, speed = 1.39, bezier = "almostLinear" })
-hl.animation({ leaf = "workspaces", enabled = true, speed = 1.94, bezier = "almostLinear", style = "slide" })
-hl.animation({ leaf = "workspacesIn", enabled = true, speed = 5, bezier = "quick", style = "slide" })
-hl.animation({ leaf = "workspacesOut", enabled = true, speed = 5, bezier = "quick", style = "slide" })
+hl.animation({ leaf = "workspaces", enabled = true, speed = 1.94, bezier = "almostLinear", style = "slidevert" })
+hl.animation({ leaf = "workspacesIn", enabled = true, speed = 5, bezier = "quick", style = "slidevert" })
+hl.animation({ leaf = "workspacesOut", enabled = true, speed = 5, bezier = "quick", style = "slidevert" })
 hl.animation({ leaf = "zoomFactor", enabled = true, speed = 7, bezier = "quick" })
 
 -- Ref https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
@@ -177,9 +177,9 @@ hl.animation({ leaf = "zoomFactor", enabled = true, speed = 7, bezier = "quick" 
 -- uncomment all if you wish to use that.
 hl.workspace_rule({ workspace = "1", monitor = "HDMI-A-1", persistent = true })
 hl.workspace_rule({ workspace = "2", monitor = "HDMI-A-1", persistent = true, layout = "master" })
-hl.workspace_rule({ workspace = "3", monitor = "HDMI-A-1", persistent = true })
-hl.workspace_rule({ workspace = "4", monitor = "HDMI-A-1", persistent = true })
-hl.workspace_rule({ workspace = "5", monitor = "HDMI-A-1", persistent = true })
+hl.workspace_rule({ workspace = "3", monitor = "HDMI-A-1", persistent = true, layout = "master" })
+hl.workspace_rule({ workspace = "4", monitor = "HDMI-A-1", persistent = true, layout = "dwindle" })
+hl.workspace_rule({ workspace = "5", monitor = "HDMI-A-1", persistent = true, layout = "dwindle" })
 hl.workspace_rule({ workspace = "6", monitor = "HDMI-A-1", persistent = true })
 hl.workspace_rule({ workspace = "7", monitor = "HDMI-A-1", persistent = true })
 hl.workspace_rule({ workspace = "8", monitor = "HDMI-A-1", persistent = true })
@@ -211,6 +211,8 @@ hl.config({
 hl.config({
 	master = {
 		new_status = "master",
+		orientation = "left",
+		mfact = 0.65,
 	},
 })
 
@@ -250,7 +252,7 @@ hl.config({
 
 		follow_mouse = 1,
 
-		sensitivity = 1.0, -- -1.0 - 1.0, 0 means no modification.
+		sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
 
 		touchpad = {
 			natural_scroll = false,
@@ -277,10 +279,10 @@ hl.device({
 
 local SUPER = "SUPER" -- Sets "Windows" key as main modifier
 local SHIFT = "SHIFT" -- Sets "Windows" key as main modifier
-local LEFT = "h"
-local RIGHT = "l"
-local UP = "k"
-local DOWN = "j"
+local LEFT = "H"
+local RIGHT = "L"
+local UP = "K"
+local DOWN = "J"
 
 local function key_to_str(main, keys)
 	if keys ~= nil then
@@ -307,7 +309,66 @@ hl.bind(Super("Return"), hl.dsp.exec_cmd(terminal))
 hl.bind(Super({ SHIFT, "Q" }), hl.dsp.window.close())
 hl.bind(Super({ SHIFT, "Escape" }), hl.dsp.exec_cmd(session))
 
-hl.bind(Super("R"), hl.dsp.layout("colresize -conf"))
+hl.bind(Super("R"), hl.dsp.submap("resize"))
+
+local function resize(direction)
+	local ws = hl.get_active_workspace()
+	if ws.tiled_layout == "scrolling" and type(direction) == "string" then
+		if direction == "up" or direction == "down" then
+			return
+		end
+		local dir = {
+			left = "colresize -0.01",
+			right = "colresize +0.01",
+			full = "colresize 1",
+		}
+		hl.dispatch(hl.dsp.layout(dir[direction]))
+	else
+		if direction == "full" then
+			return
+		end
+		local dir = {
+			left = {
+				x = -10,
+				y = 0,
+			},
+			right = {
+				x = 10,
+				y = 0,
+			},
+			up = {
+				x = 0,
+				y = 10,
+			},
+			down = {
+				x = 0,
+				y = -10,
+			},
+		}
+		hl.dispatch(hl.dsp.window.resize({ x = dir[direction].x, y = dir[direction].y, relative = true }))
+	end
+end
+
+hl.define_submap("resize", function()
+	hl.bind(UP, function()
+		resize("up")
+	end, { repeating = true })
+	hl.bind(DOWN, function()
+		resize("down")
+	end, { repeating = true })
+	hl.bind(LEFT, function()
+		resize("left")
+	end, { repeating = true })
+	hl.bind(RIGHT, function()
+		resize("right")
+	end, { repeating = true })
+	hl.bind("F", function()
+		resize("full")
+	end)
+
+	hl.bind("Escape", hl.dsp.submap("reset"))
+end)
+
 hl.bind(Super("F"), hl.dsp.layout("colresize 1"))
 hl.bind(Super({ SHIFT, "F" }), hl.dsp.window.fullscreen())
 
@@ -328,16 +389,62 @@ hl.bind(Super(RIGHT), hl.dsp.focus({ direction = "right" }))
 hl.bind(Super(UP), hl.dsp.focus({ direction = "up" }))
 hl.bind(Super(DOWN), hl.dsp.focus({ direction = "down" }))
 
-hl.bind(Super({ SHIFT, LEFT }), hl.dsp.window.move({ direction = "left" }))
-hl.bind(Super({ SHIFT, RIGHT }), hl.dsp.window.move({ direction = "right" }))
+local function get_dir_window(ws, direction)
+	local active_window = hl.get_active_window()
+	if not active_window then
+		return
+	end
+	local active_x = active_window.at.x
+	local windows = hl.get_workspace_windows(ws)
+	if windows and #windows > 1 then
+		for _, window in ipairs(windows) do
+			local x = window.at.x
+			if direction == "right" then
+				if x > active_x then
+					return window
+				end
+			end
+			if x < active_x then
+				return window
+			end
+		end
+	end
+end
+
+local function move_win(direction)
+	local ws = hl.get_active_workspace()
+	if ws.tiled_layout == "scrolling" then
+		if get_dir_window(ws, direction) then
+			hl.dispatch(hl.dsp.window.swap({ direction = direction }))
+			return
+		end
+	end
+	hl.dispatch(hl.dsp.window.move({ direction = direction }))
+end
+
+hl.bind(Super({ SHIFT, LEFT }), function()
+	move_win("left")
+end)
+
+hl.bind(Super({ SHIFT, RIGHT }), function()
+	move_win("right")
+end)
+
 hl.bind(Super({ SHIFT, UP }), hl.dsp.window.move({ direction = "up" }))
 hl.bind(Super({ SHIFT, DOWN }), hl.dsp.window.move({ direction = "down" }))
 
 hl.bind(Super("TAB"), hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(Super({ SHIFT, "TAB" }), hl.dsp.focus({ workspace = "e-1" }))
 
-hl.bind(Alt({ SHIFT, "TAB" }), hl.dsp.focus({ direction = "left" }))
-hl.bind(Alt("TAB"), hl.dsp.focus({ direction = "right" }))
+hl.bind(Alt({ SHIFT, "TAB" }), hl.dsp.window.swap({ next = true }))
+hl.bind(Alt("TAB"), function()
+	local ws = hl.get_active_workspace()
+	if ws.tiled_layout == "monocle" then
+		hl.dispatch(hl.dsp.layout("cyclenext"))
+		return
+	end
+	hl.dispatch(hl.dsp.window.cycle_next())
+end)
 
 -- Switch workspaces with mainMod + [1-9]
 -- Move active window to a workspace with mainMod + SHIFT + [1-9]
