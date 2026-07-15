@@ -39,14 +39,8 @@ hl.monitor({
 ---- MY PROGRAMS ----
 ---------------------
 
--- Set programs that you use
-local terminal = "kitty"
-local fileManager = "thunar"
-local menu = "rofi -show drun"
-local control_center = "noctalia msg panel-toggle control-center"
-local session = "noctalia msg panel-toggle session"
 local status_bar = "noctalia"
-local wallpaper = "awww-daemon"
+local dbus = "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
 
 -------------------
 ---- AUTOSTART ----
@@ -59,7 +53,7 @@ local wallpaper = "awww-daemon"
 --
 hl.on("hyprland.start", function()
 	hl.exec_cmd(status_bar)
-	hl.exec_cmd("noctalia msg bar-auto-hide-set true default eDP-1")
+	hl.exec_cmd(dbus)
 	-- hl.exec_cmd(wallpaper)
 end)
 
@@ -71,6 +65,7 @@ end)
 
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
+hl.env("XDPH_SHARE_PICKER_BINARY", "/usr/bin/hyprland-preview-share-picker")
 
 -----------------------
 ----- PERMISSIONS -----
@@ -187,12 +182,26 @@ hl.workspace_rule({ workspace = "9", monitor = "HDMI-A-1", persistent = true })
 hl.workspace_rule({ workspace = "10", monitor = "eDP-1", persistent = true, layout = "master" })
 -- hl.workspace_rule({ workspace = "w[tv1]", gaps_out = 0, gaps_in = 0 })
 -- hl.workspace_rule({ workspace = "f[1]",   gaps_out = 0, gaps_in = 0 })
--- hl.window_rule({
---     name  = "no-gaps-wtv1",
---     match = { float = false, workspace = "w[tv1]" },
---     border_size = 0,
---     rounding    = 0,
--- })
+hl.window_rule({
+	name = "noctalia",
+	match = { class = "dev.noctalia.Noctalia" },
+	border_size = 0,
+	rounding = 0,
+	float = true,
+	size = { 1200, 800 },
+})
+
+hl.window_rule({
+	name = "floats",
+	match = { float = true },
+	center = true,
+})
+
+hl.window_rule({
+	name = "output_picker",
+	match = { class = "hyprland-share-picker" },
+	float = true,
+})
 -- hl.window_rule({
 --     name  = "no-gaps-f1",
 --     match = { float = false, workspace = "f[1]" },
@@ -222,7 +231,6 @@ hl.config({
 		fullscreen_on_one_column = true,
 		column_width = 1,
 		focus_fit_method = 1,
-		explicit_column_widths = "0.25, 0.5, 0.75, 1",
 		direction = "right",
 	},
 })
@@ -234,7 +242,7 @@ hl.config({
 hl.config({
 	misc = {
 		force_default_wallpaper = 0, -- Set to 0 or 1 to disable the anime mascot wallpapers
-		disable_hyprland_logo = false, -- If true disables the random hyprland logo / anime girl background. :(
+		disable_hyprland_logo = true, -- If true disables the random hyprland logo / anime girl background. :(
 	},
 })
 
@@ -277,226 +285,7 @@ hl.device({
 ---- KEYBINDINGS ----
 ---------------------
 
-local SUPER = "SUPER" -- Sets "Windows" key as main modifier
-local SHIFT = "SHIFT" -- Sets "Windows" key as main modifier
-local LEFT = "H"
-local RIGHT = "L"
-local UP = "K"
-local DOWN = "J"
-
-local function key_to_str(main, keys)
-	if keys ~= nil then
-		if type(keys) == "table" then
-			return main .. " + " .. table.concat(keys, " + ")
-		else
-			return main .. " + " .. tostring(keys)
-		end
-	else
-		return table.concat(main, " + ")
-	end
-end
-
-local function Super(keys)
-	return key_to_str(SUPER, keys)
-end
-
-local function Alt(keys)
-	return key_to_str("ALT", keys)
-end
-
-local function Ctrl(keys)
-	return key_to_str("CTRL", keys)
-end
-
--- bind=Super,Print,spawn_shell,grim - | wl-copy
--- bind=None,Print,spawn_shell,grim -g "$(slurp)" - | wl-copy
-
-hl.bind(Super("Print"), hl.dsp.exec_cmd("hyprshot -m output --clipboard-only"))
-hl.bind(Alt("Print"), hl.dsp.exec_cmd("hyprshot -m window --clipboard-only"))
-hl.bind(Ctrl("Print"), hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))
-
-hl.bind(Super({ SHIFT, "Print" }), hl.dsp.exec_cmd("hyprshot -m output "))
-hl.bind(Alt({ SHIFT, "Print" }), hl.dsp.exec_cmd("hyprshot -m window "))
-hl.bind(Ctrl({ SHIFT, "Print" }), hl.dsp.exec_cmd("hyprshot -m region "))
-
--- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
-hl.bind(Super("Return"), hl.dsp.exec_cmd(terminal))
-hl.bind(Super({ SHIFT, "Q" }), hl.dsp.window.close())
-hl.bind(Super({ SHIFT, "Escape" }), hl.dsp.exec_cmd(session))
-
-hl.bind(Super("R"), hl.dsp.submap("resize"))
-
-local function resize(direction)
-	local ws = hl.get_active_workspace()
-	if ws.tiled_layout == "scrolling" and type(direction) == "string" then
-		if direction == "up" or direction == "down" then
-			return
-		end
-		local dir = {
-			left = "colresize -0.01",
-			right = "colresize +0.01",
-			full = "colresize 1",
-		}
-		hl.dispatch(hl.dsp.layout(dir[direction]))
-	else
-		if direction == "full" then
-			return
-		end
-		local dir = {
-			left = {
-				x = -10,
-				y = 0,
-			},
-			right = {
-				x = 10,
-				y = 0,
-			},
-			up = {
-				x = 0,
-				y = 10,
-			},
-			down = {
-				x = 0,
-				y = -10,
-			},
-		}
-		hl.dispatch(hl.dsp.window.resize({ x = dir[direction].x, y = dir[direction].y, relative = true }))
-	end
-end
-
-hl.define_submap("resize", function()
-	hl.bind(UP, function()
-		resize("up")
-	end, { repeating = true })
-	hl.bind(DOWN, function()
-		resize("down")
-	end, { repeating = true })
-	hl.bind(LEFT, function()
-		resize("left")
-	end, { repeating = true })
-	hl.bind(RIGHT, function()
-		resize("right")
-	end, { repeating = true })
-	hl.bind("F", function()
-		resize("full")
-	end)
-
-	hl.bind("Escape", hl.dsp.submap("reset"))
-end)
-
-hl.bind(Super("F"), hl.dsp.layout("colresize 1"))
-hl.bind(Super({ SHIFT, "F" }), hl.dsp.window.fullscreen())
-
-hl.bind(
-	Super({ SHIFT, "M" }),
-	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
-)
-hl.bind(Super("E"), hl.dsp.exec_cmd(fileManager))
-hl.bind(Super("V"), hl.dsp.window.float({ action = "toggle" }))
-hl.bind(Super("D"), hl.dsp.exec_cmd(menu))
-hl.bind(Super({ SHIFT, "D" }), hl.dsp.exec_cmd(control_center))
-hl.bind(Super("P"), hl.dsp.window.pseudo())
--- hl.bind(Super("J"), hl.dsp.layout("togglesplit")) -- dwindle only
-
--- Move focus with mainMod + arrow keys
-hl.bind(Super(LEFT), hl.dsp.focus({ direction = "left" }))
-hl.bind(Super(RIGHT), hl.dsp.focus({ direction = "right" }))
-hl.bind(Super(UP), hl.dsp.focus({ direction = "up" }))
-hl.bind(Super(DOWN), hl.dsp.focus({ direction = "down" }))
-
-local function get_dir_window(ws, direction)
-	local active_window = hl.get_active_window()
-	if not active_window then
-		return
-	end
-	local active_x = active_window.at.x
-	local windows = hl.get_workspace_windows(ws)
-	if windows and #windows > 1 then
-		for _, window in ipairs(windows) do
-			local x = window.at.x
-			if direction == "right" then
-				if x > active_x then
-					return window
-				end
-			end
-			if x < active_x then
-				return window
-			end
-		end
-	end
-end
-
-local function move_win(direction)
-	local ws = hl.get_active_workspace()
-	if ws.tiled_layout == "scrolling" then
-		if get_dir_window(ws, direction) then
-			hl.dispatch(hl.dsp.window.swap({ direction = direction }))
-			return
-		end
-	end
-	hl.dispatch(hl.dsp.window.move({ direction = direction }))
-end
-
-hl.bind(Super({ SHIFT, LEFT }), function()
-	move_win("left")
-end)
-
-hl.bind(Super({ SHIFT, RIGHT }), function()
-	move_win("right")
-end)
-
-hl.bind(Super({ SHIFT, UP }), hl.dsp.window.move({ direction = "up" }))
-hl.bind(Super({ SHIFT, DOWN }), hl.dsp.window.move({ direction = "down" }))
-
-hl.bind(Super("TAB"), hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(Super({ SHIFT, "TAB" }), hl.dsp.focus({ workspace = "e-1" }))
-
-hl.bind(Alt({ SHIFT, "TAB" }), hl.dsp.window.swap({ next = true }))
-hl.bind(Alt("TAB"), function()
-	local ws = hl.get_active_workspace()
-	if ws.tiled_layout == "monocle" then
-		hl.dispatch(hl.dsp.layout("cyclenext"))
-		return
-	end
-	hl.dispatch(hl.dsp.window.cycle_next())
-end)
-
--- Switch workspaces with mainMod + [1-9]
--- Move active window to a workspace with mainMod + SHIFT + [1-9]
-for i = 1, 10 do
-	local key = i % 10 -- 10 maps to key 0
-	hl.bind(Super(key), hl.dsp.focus({ workspace = i }))
-	hl.bind(Super({ SHIFT, key }), hl.dsp.window.move({ workspace = i }))
-end
-
--- Example special workspace (scratchpad)
-hl.bind(Super("S"), hl.dsp.workspace.toggle_special("magic"))
-hl.bind(Super({ SHIFT, "S" }), hl.dsp.window.move({ workspace = "special:magic" }))
-
--- Scroll through existing workspaces with mainMod + scroll
-hl.bind(Super("mouse_down"), hl.dsp.focus({ workspace = "e-1" }))
-hl.bind(Super("mouse_up"), hl.dsp.focus({ workspace = "e+1" }))
-
--- Move/resize windows with mainMod + LMB/RMB and dragging
-hl.bind(Super("mouse:272"), hl.dsp.window.drag(), { mouse = true })
-hl.bind(Super("mouse:273"), hl.dsp.window.resize(), { mouse = true })
-
-local fn_keys = {
-	XF86AudioRaiseVolume = "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+",
-	XF86AudioLowerVolume = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
-	XF86AudioMute = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-	XF86AudioMicMute = "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
-	XF86MonBrightnessUp = "brightnessctl -e4 -n2 set 5%+",
-	XF86MonBrightnessDown = "brightnessctl -e4 -n2 set 5%-",
-	XF86AudioNext = "playerctl next",
-	XF86AudioPause = "playerctl play-pause",
-	XF86AudioPlay = "playerctl play-pause",
-	XF86AudioPrev = "playerctl previous",
-}
-
-for key, action in pairs(fn_keys) do
-	hl.bind(key, hl.dsp.exec_cmd(action), { locked = true, repeating = true })
-end
+require("binds")
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
@@ -509,6 +298,12 @@ end
 hl.window_rule({
 	name = "TLauncher",
 	match = { class = "org-tlauncher-tlauncher-rmo-TLauncher" },
+	immediate = true,
+})
+
+hl.window_rule({
+	name = "nwg-look",
+	match = { class = "nwg-look" },
 	float = true,
 })
 
@@ -552,3 +347,6 @@ hl.window_rule({
 	move = "20 monitor_h-120",
 	float = true,
 })
+
+-- For Noctalia Color templates
+require("noctalia").apply_theme()

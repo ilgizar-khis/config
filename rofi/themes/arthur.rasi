@@ -14,11 +14,11 @@
     lightblack:  #554444;
     tlightblack:  #554444cc;
 
-	brown: #674B00;
+	brown: #121200;
     //
     // Red
-    red:         #cd5c5c;
-    lightred:    #cc5533;
+    red:         #aa5555;
+    lightred:    #ee5555;
     //
     // Green
     green:       #86af80;
@@ -132,7 +132,7 @@ element alternate urgent {
     foreground: @lightred;
 }
 element selected active {
-    background-color: @lightblue;
+    background-color: @lightred;
     foreground: @dark;
 }
 element selected urgent {
