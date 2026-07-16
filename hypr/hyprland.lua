@@ -193,6 +193,12 @@ hl.window_rule({
 })
 
 hl.window_rule({
+	name = "magic",
+	match = { workspace = "special:magic" },
+	border_color = "#abcdef",
+})
+
+hl.window_rule({
 	name = "floats",
 	match = { float = true },
 	center = true,
