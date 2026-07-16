@@ -28,7 +28,21 @@
 " ------------------------------------------------------------------------------
 " Main settings
 " ------------------------------------------------------------------------------
+plugin load
+if has('#sbar#fmt')
+    set statusline=#sbar#fmt
 
+    " current session, if any
+    sbar left $session
+    " file name
+    sbar left %t
+    " file attributes
+    sbar right %A
+    " human readable cumulative file size
+    sbar right %5E
+    " file modification date and time
+    sbar right %d
+endif
 " Command used to edit files in various contexts.  The default is vim.
 " If you would like to use another vi clone such as Elvis or Vile
 " you will need to change this setting.
