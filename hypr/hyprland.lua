@@ -305,7 +305,8 @@ require("binds")
 hl.window_rule({
 	name = "TLauncher",
 	match = { class = "org-tlauncher-tlauncher-rmo-TLauncher" },
-	immediate = true,
+	float = true,
+	center = true,
 })
 
 hl.window_rule({
