@@ -54,6 +54,7 @@ local dbus = "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_C
 hl.on("hyprland.start", function()
 	hl.exec_cmd(status_bar)
 	hl.exec_cmd(dbus)
+	hl.exec_cmd("diskie")
 	-- hl.exec_cmd(wallpaper)
 end)
 
