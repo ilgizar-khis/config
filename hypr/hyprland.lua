@@ -34,8 +34,7 @@ require("lua.events")
 ---- ENVIRONMENT VARIABLES ----
 -------------------------------
 
-hl.env("XCURSOR_SIZE", "24")
-hl.env("HYPRCURSOR_SIZE", "24")
+require("lua.env")
 
 -- look and feel (theme, colorscheme, gaps, animations, borders)
 require("lua.theme")
