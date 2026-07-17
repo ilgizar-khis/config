@@ -47,7 +47,6 @@ end)
 
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
-hl.env("XDPH_SHARE_PICKER_BINARY", "/usr/bin/hyprland-preview-share-picker")
 
 -- look and feel (theme, colorscheme, gaps, animations, borders)
 require("lua.theme")
