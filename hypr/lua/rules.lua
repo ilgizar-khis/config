@@ -1,54 +1,27 @@
 ---@diagnostic disable: undefined-global
 -- workspace rules
+
 hl.workspace_rule({
 	workspace = "1",
 	monitor = "HDMI-A-1",
 	persistent = true,
 })
+
 hl.workspace_rule({
 	workspace = "2",
 	monitor = "HDMI-A-1",
 	persistent = true,
 	layout = "master",
 })
-hl.workspace_rule({
-	workspace = "3",
-	monitor = "HDMI-A-1",
-	persistent = true,
-	layout = "master",
-})
-hl.workspace_rule({
-	workspace = "4",
-	monitor = "HDMI-A-1",
-	persistent = true,
-	layout = "dwindle",
-})
-hl.workspace_rule({
-	workspace = "5",
-	monitor = "HDMI-A-1",
-	persistent = true,
-	layout = "dwindle",
-})
-hl.workspace_rule({
-	workspace = "6",
-	monitor = "HDMI-A-1",
-	persistent = true,
-})
-hl.workspace_rule({
-	workspace = "7",
-	monitor = "HDMI-A-1",
-	persistent = true,
-})
-hl.workspace_rule({
-	workspace = "8",
-	monitor = "HDMI-A-1",
-	persistent = true,
-})
-hl.workspace_rule({
-	workspace = "9",
-	monitor = "HDMI-A-1",
-	persistent = true,
-})
+
+for i = 3, 9 do
+	hl.workspace_rule({
+		workspace = i,
+		monitor = "HDMI-A-1",
+		persistent = true,
+	})
+end
+
 hl.workspace_rule({
 	workspace = "10",
 	monitor = "eDP-1",
