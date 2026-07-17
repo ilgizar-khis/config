@@ -245,7 +245,7 @@ hl.device({
 ---- KEYBINDINGS ----
 ---------------------
 
-require("binds")
+require("lua.binds")
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
