@@ -24,13 +24,6 @@ hl.monitor({
 	scale = "1",
 })
 
----------------------
----- MY PROGRAMS ----
----------------------
-
-local status_bar = "noctalia"
-local dbus = "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-
 -------------------
 ---- EVENTS ----
 -------------------
