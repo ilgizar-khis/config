@@ -1,5 +1,6 @@
+---@diagnostic disable: undefined-global
 -- programs
-local status_bar = "qs -c noctalia"
+local status_bar = "noctalia"
 local dbus = "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
 local udiskie = "udiskie"
 
