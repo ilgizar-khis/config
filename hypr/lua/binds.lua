@@ -20,6 +20,10 @@ local function Super(k1, k2, k3)
 	return table.concat({ SUPER, k1, k2, k3 }, " + ")
 end
 
+local function Shift(k1, k2, k3)
+	return table.concat({ SHIFT, k1, k2, k3 }, " + ")
+end
+
 local function Alt(k1, k2, k3)
 	return table.concat({ ALT, k1, k2, k3 }, " + ")
 end
@@ -29,11 +33,11 @@ local function Ctrl(k1, k2, k3)
 end
 
 hl.bind(Super(PRINT), hl.dsp.exec_cmd("hyprshot -m output"))
-hl.bind(Super(SHIFT, PRINT), hl.dsp.exec_cmd("hyprshot -m output --clipboard-only"))
+hl.bind(Super(Shift(PRINT)), hl.dsp.exec_cmd("hyprshot -m output --clipboard-only"))
 hl.bind(Alt(PRINT), hl.dsp.exec_cmd("hyprshot -m window"))
-hl.bind(Alt(SHIFT, PRINT), hl.dsp.exec_cmd("hyprshot -m window --clipboard-only"))
+hl.bind(Alt(Shift(PRINT)), hl.dsp.exec_cmd("hyprshot -m window --clipboard-only"))
 hl.bind(Ctrl(PRINT), hl.dsp.exec_cmd("hyprshot -m region"))
-hl.bind(Ctrl(SHIFT, PRINT), hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))
+hl.bind(Ctrl(Shift(PRINT)), hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(Super(RETURN), hl.dsp.exec_cmd(terminal))
