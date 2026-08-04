@@ -32,13 +32,23 @@ local function Ctrl(k1, k2, k3)
 	return table.concat({ CTRL, k1, k2, k3 }, " + ")
 end
 
-local shotutil = "hyprshot -m"
-hl.bind(Super(PRINT), hl.dsp.exec_cmd(shotutil .. " output"))
-hl.bind(Super(Shift(PRINT)), hl.dsp.exec_cmd(shotutil .. " output --clipboard-only"))
-hl.bind(Alt(PRINT), hl.dsp.exec_cmd(shotutil .. " window"))
-hl.bind(Alt(Shift(PRINT)), hl.dsp.exec_cmd(shotutil .. " window --clipboard-only"))
-hl.bind(Ctrl(PRINT), hl.dsp.exec_cmd(shotutil .. " region"))
-hl.bind(Ctrl(Shift(PRINT)), hl.dsp.exec_cmd(shotutil .. " region --clipboard-only"))
+local function hyprshot(mode, clipboard)
+	local cmd = "hyprshot -m"
+	local clipboard_only = "--clipboard-only"
+	if mode then
+		cmd = table.concat({ cmd, mode }, " ")
+		if clipboard then
+			cmd = table.concat({ cmd, clipboard_only }, " ")
+		end
+		return cmd
+	end
+end
+hl.bind(Super(PRINT), hl.dsp.exec_cmd(hyprshot("output")))
+hl.bind(Super(Shift(PRINT)), hl.dsp.exec_cmd(hyprshot("output", true)))
+hl.bind(Alt(PRINT), hl.dsp.exec_cmd(hyprshot("window")))
+hl.bind(Alt(Shift(PRINT)), hl.dsp.exec_cmd(hyprshot("window", true)))
+hl.bind(Ctrl(PRINT), hl.dsp.exec_cmd(hyprshot("region")))
+hl.bind(Ctrl(Shift(PRINT)), hl.dsp.exec_cmd(hyprshot("region", true)))
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(Super(RETURN), hl.dsp.exec_cmd(terminal))
