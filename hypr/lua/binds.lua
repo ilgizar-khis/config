@@ -158,6 +158,8 @@ local fn_keys = {
 	XF86AudioPause = "playerctl play-pause",
 	XF86AudioPlay = "playerctl play-pause",
 	XF86AudioPrev = "playerctl previous",
+	XF86Calculator = "kitty ipython",
+	XF86Mail = "firefox https://mail.google.com/mail",
 }
 
 for key, action in pairs(fn_keys) do
