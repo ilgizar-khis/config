@@ -1,11 +1,11 @@
 configuration {
-    modi: "drun,window,calc,run";
+    modi: "drun,window,calc,run,find:~/.config/rofi/find.sh";
     side-bar: true;
     lines: 0;
     dynamic: true;
 }
 
-@theme ".config/rofi/themes/material.rasi"
+@theme "/home/razigli/.config/rofi/themes/material.rasi"
 
 window {
     height: 60%;
