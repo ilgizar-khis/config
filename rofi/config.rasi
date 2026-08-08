@@ -1,5 +1,5 @@
 configuration {
-    modi: "drun,window,calc,system:~/config/rofi/system.sh,run";
+    modi: "drun,window,calc,run";
     side-bar: true;
     lines: 0;
     dynamic: true;
