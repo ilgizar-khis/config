@@ -5,9 +5,10 @@ configuration {
     dynamic: true;
 }
 
+@theme ".config/rofi/themes/material.rasi"
+
 window {
     height: 60%;
     width: 40%;
 }
 
-@theme ".config/rofi/themes/material.rasi"
