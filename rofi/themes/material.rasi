@@ -51,6 +51,7 @@
 window {
 	transparency: "real";
 	background-color: #291914cc;
+	border-radius: 15px;
 }
 
 mainbox {
@@ -58,8 +59,8 @@ mainbox {
 	spacing: 0;
 	padding: 5px 0  15px 0 ;
 	border: 3px;
-	border-radius: 15px;
 	border-color: @border;
+	border-radius: 15px;
 }
 
 inputbar {
