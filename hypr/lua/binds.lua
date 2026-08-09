@@ -43,6 +43,7 @@ local function hyprshot(mode, clipboard)
 		return cmd
 	end
 end
+
 hl.bind(Super(PRINT), hl.dsp.exec_cmd(hyprshot("output")))
 hl.bind(Super(Shift(PRINT)), hl.dsp.exec_cmd(hyprshot("output", true)))
 hl.bind(Alt(PRINT), hl.dsp.exec_cmd(hyprshot("window")))
@@ -55,19 +56,13 @@ hl.bind(Super(RETURN), hl.dsp.exec_cmd(terminal))
 hl.bind(Super(SHIFT, "Q"), hl.dsp.window.close())
 hl.bind(Super(SHIFT, ESCAPE), hl.dsp.exec_cmd(session))
 
-hl.bind(Super("R"), hl.dsp.submap("resize"))
+hl.bind(Super("EQUAL"), function()
+	hl.dispatch(hl.dsp.layout("colresize +conf"))
+end, { repeating = true })
 
-hl.define_submap("resize", function()
-	hl.bind(ARROWS.right, function()
-		hl.dispatch(hl.dsp.window.resize({ x = 10, y = 0, relative = true }))
-	end, { repeating = true })
-
-	hl.bind(ARROWS.left, function()
-		hl.dispatch(hl.dsp.window.resize({ x = -10, y = 0, relative = true }))
-	end, { repeating = true })
-
-	hl.bind(ESCAPE, hl.dsp.submap("reset"))
-end)
+hl.bind(Super("MINUS"), function()
+	hl.dispatch(hl.dsp.layout("colresize -conf"))
+end, { repeating = true })
 
 hl.bind(Super("F"), hl.dsp.layout("colresize 1"))
 hl.bind(Super(SHIFT, "F"), hl.dsp.window.fullscreen())
