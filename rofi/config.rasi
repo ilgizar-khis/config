@@ -7,8 +7,4 @@ configuration {
 
 @theme "/home/razigli/.config/rofi/themes/material.rasi"
 
-window {
-    height: 60%;
-    width: 60%;
-}
 
