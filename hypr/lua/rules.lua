@@ -1,20 +1,7 @@
 ---@diagnostic disable: undefined-global
 -- workspace rules
 
-hl.workspace_rule({
-	workspace = "1",
-	monitor = "HDMI-A-1",
-	persistent = true,
-})
-
-hl.workspace_rule({
-	workspace = "2",
-	monitor = "HDMI-A-1",
-	persistent = true,
-	layout = "master",
-})
-
-for i = 3, 9 do
+for i = 1, 9 do
 	hl.workspace_rule({
 		workspace = i,
 		monitor = "HDMI-A-1",
