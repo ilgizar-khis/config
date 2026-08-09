@@ -9,18 +9,7 @@ for c in kitty alacritty ghostty foot thunar pcmanfm; do
 	fi
 done
 
-if [[ "$ROFI_RETV" == "2" ]];then
-	if [[ "$#" == "1" ]]; then
-		echo "Show hiddens"
-		echo -ne "\0data\x1f$1\n"
-		echo -ne "\0prompt\x1f$1\n"
-		if [ -n "$(command -v "fd")" ]; then
-			fd "$1"
-		else
-			find ~ -iname "*$1*" -not -path "*/.*"
-		fi
-	fi
-elif [[ "$ROFI_RETV" == "1" ]];then
+if [[ "$ROFI_RETV" == "1" ]];then
 	if [[ "$1" == "Show hiddens" ]]; then
 		if [ -n "$(command -v "fd")" ]; then
 			fd --hidden "$ROFI_DATA"
@@ -34,6 +23,17 @@ elif [[ "$ROFI_RETV" == "1" ]];then
 		else
 			$client "$(dirname $1)" > /dev/null 2>&1 &
 			disown 
+		fi
+	fi
+elif [[ "$ROFI_RETV" == "2" ]];then
+	if [[ "$#" == "1" ]]; then
+		echo "Show hiddens"
+		echo -ne "\0data\x1f$1\n"
+		echo -ne "\0prompt\x1f$1\n"
+		if [ -n "$(command -v "fd")" ]; then
+			fd "$1"
+		else
+			find ~ -iname "*$1*" -not -path "*/.*"
 		fi
 	fi
 fi
