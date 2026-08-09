@@ -21,4 +21,5 @@ local function set_bg(output)
 	vifm.sb.info(to_cmd(cmd))
 	vifm.startjob({ cmd = to_cmd(cmd) })
 end
-assert(vifm.cmds.add({ name = "setbg", maxargs = 1, handler = set_bg }))
+
+vifm.cmds.add({ name = "setbg", maxargs = 1, handler = set_bg })
