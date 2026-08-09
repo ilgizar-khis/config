@@ -2,9 +2,10 @@
 
 client=""
 
-for term in kitty alacritty ghostty foot; do
+for term in kitty alacritty ghostty foot thunar pcmanfm; do
 	if [ -n "$(command -v $term)" ]; then
 		client="$term"
+		break
 	fi
 done
 
