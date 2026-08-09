@@ -124,7 +124,7 @@ element {
 	padding: 10px;
 	spacing: 5px;
 	highlight: bold underline;
-	children: [element-icon, element-text];
+	children: [element-text];
 }
 
 element-text, element-icon {
