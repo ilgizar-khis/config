@@ -9,7 +9,14 @@ local function to_cmd(tbl)
 end
 
 local function main(opt)
-	local cmd = { "fd", opt.argv[1], opt.argv[2], opt.argv[3] }
+	local cmd = { "fd" }
+	for _, arg in ipairs(opt.argv) do
+		if string.find(arg, "^-[ah]") then
+			table.insert(cmd, "--hidden")
+		else
+			table.insert(cmd, arg)
+		end
+	end
 	local res = vifm.startjob({ cmd = to_cmd(cmd) }):stdout()
 	local lines = {}
 	for line in res:lines() do
