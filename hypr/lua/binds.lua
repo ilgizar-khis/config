@@ -8,7 +8,10 @@ local PRINT = "PRINT"
 local RETURN = "RETURN"
 local ESCAPE = "ESCAPE"
 
-local ARROWS = { left = "H", right = "L", up = "K", down = "J" }
+local LEFT = "H"
+local RIGHT = "L"
+local UP = "K"
+local DOWN = "J"
 
 -- Set programs that you use
 local terminal = "kitty"
@@ -80,10 +83,16 @@ hl.bind(Super("D"), hl.dsp.exec_cmd(menu))
 hl.bind(Super(SHIFT, "D"), hl.dsp.exec_cmd(control_center))
 
 -- Move focus with mainMod + arrow keys
-for dir, key in pairs(ARROWS) do
-	hl.bind(Super(key), hl.dsp.focus({ direction = dir }))
-	hl.bind(Super(SHIFT, key), hl.dsp.window.swap({ direction = dir }))
-end
+hl.bind(Super(LEFT), hl.dsp.focus({ direction = "left" }))
+hl.bind(Super(RIGHT), hl.dsp.focus({ direction = "right" }))
+
+hl.bind(Super(UP), hl.dsp.focus({ workspace = "-1" }))
+hl.bind(Super(DOWN), hl.dsp.focus({ workspace = "+1" }))
+
+hl.bind(Super(Shift(LEFT)), hl.dsp.window.swap({ direction = "left" }))
+hl.bind(Super(Shift(RIGHT)), hl.dsp.window.swap({ direction = "right" }))
+hl.bind(Super(Shift(UP)), hl.dsp.window.move({ workspace = "-1" }))
+hl.bind(Super(Shift(DOWN)), hl.dsp.window.move({ workspace = "+1" }))
 
 local function get_next_output()
 	local output = hl.get_active_monitor()
