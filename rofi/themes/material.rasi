@@ -52,7 +52,7 @@ window {
     height: 60%;
     width: 60%;
 	transparency: "real";
-	background-color: #291914cc;
+	background-color: #291914bb;
 	border-color: @border;
 	border-radius: 10px;
 	border: 3px;
